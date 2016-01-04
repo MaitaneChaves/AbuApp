@@ -10,25 +10,14 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Juegos"
-        android:onClick="juegos"/>
+        android:text="Palabras"
+        android:onClick="palabras"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Dia a dia"
-        android:onClick="diaadia"/>
+        android:text="Canciones"
+        android:onClick="canciones"/>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Hablando"
-        android:onClick="hablando"/>
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Traductor"
-        android:onClick="traductor"/>
 
 </LinearLayout>

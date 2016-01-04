@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:columnCount="2"
+        android:rowCount="6">
+
+        <ImageView android:id="@+id/foto_parejas1"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/foto"
+            android:gravity="center"
+            android:onClick="guardarPareja"/>
+
+        <ImageView android:id="@+id/foto_parejas2"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/foto"
+            android:gravity="center"
+            android:onClick="guardarPareja"/>
+
+        <ImageView android:id="@+id/foto_parejas3"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/foto"
+            android:gravity="center"
+            android:onClick="guardarPareja"/>
+
+        <ImageView android:id="@+id/foto_parejas4"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/foto"
+            android:gravity="center"
+            android:onClick="guardarPareja"/>
+
+        <ImageView android:id="@+id/foto_parejas5"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/foto"
+            android:gravity="center"
+            android:onClick="guardarPareja"/>
+
+        <ImageView android:id="@+id/foto_parejas6"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/foto"
+            android:gravity="center"
+            android:onClick="guardarPareja"/>
+
+
+        <TextView android:id="@+id/palabra_parejas1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/palabra_parejas"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:onClick="guardarPareja" />
+
+        <TextView android:id="@+id/palabra_parejas2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/palabra_parejas"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:onClick="guardarPareja" />
+
+        <TextView android:id="@+id/palabra_parejas3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/palabra_parejas"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:onClick="guardarPareja" />
+
+        <TextView android:id="@+id/palabra_parejas4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/palabra_parejas"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:onClick="guardarPareja" />
+
+        <TextView android:id="@+id/palabra_parejas5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/palabra_parejas"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:onClick="guardarPareja" />
+
+        <TextView android:id="@+id/palabra_parejas6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/palabra_parejas"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:onClick="guardarPareja" />
+
+    </GridLayout>
+
+</LinearLayout>

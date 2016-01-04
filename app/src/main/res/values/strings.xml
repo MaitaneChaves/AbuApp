@@ -1,4 +1,15 @@
 <resources>
     <string name="app_name">AbuApp</string>
-    <string name="title_activity_main">MainActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_dia_adia">DiaADiaActivity</string>
+    <string name="title_activity_hablando">HablandoActivity</string>
+    <string name="title_activity_juegos">JuegosActivity</string>
+    <string name="title_activity_parejas">ParejasActivity</string>
+    <string name="title_activity_huecos">HuecosActivity</string>
+    <string name="title_activity_palabras">PalabrasActivity</string>
+    <string name="title_activity_canciones">CancionesActivity</string>
+    <string name="title_activity_frases_dia_adia">FrasesDiaADiaActivity</string>
+    <string name="no_app">No hay ninguna app que ejecute el microfono</string>
+    <string name="no_micro">El dispositivo no tiene microfono</string>
+    <string name="palabra_parejas">Tigre</string>
 </resources>

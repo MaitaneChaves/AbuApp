@@ -10,25 +10,20 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Juegos"
-        android:onClick="juegos"/>
+        android:text="Comprar el pan"
+        android:onClick="mostrarFrases"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Dia a dia"
-        android:onClick="diaadia"/>
+        android:text="Ir al bar"
+        android:onClick="mostrarFrases"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hablando"
-        android:onClick="hablando"/>
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Traductor"
-        android:onClick="traductor"/>
+        android:text="Ir al medico"
+        android:onClick="mostrarFrases"/>
 
 </LinearLayout>
+

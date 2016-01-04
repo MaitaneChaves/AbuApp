@@ -6,29 +6,29 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <ImageView android:id="@+id/foto_huecos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/foto"/>
 
-    <Button
+    <TextView android:id="@+id/texto_huecos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Juegos"
-        android:onClick="juegos"/>
+        android:gravity="center"
+        android:textSize="20dp"
+        android:text="Pa_abr_"/>
 
-    <Button
+    <EditText android:id="@+id/respuesta_huecos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:hint="Pa_abr_" />
+
+    <Button android:id="@+id/boton_huecos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Dia a dia"
-        android:onClick="diaadia"/>
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Hablando"
-        android:onClick="hablando"/>
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Traductor"
-        android:onClick="traductor"/>
+        android:text="Egiaztatu"
+        android:onClick="comprobar"/>
 
 </LinearLayout>

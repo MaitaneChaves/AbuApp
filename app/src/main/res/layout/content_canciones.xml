@@ -7,28 +7,23 @@
     android:orientation="vertical">
 
 
-    <Button
+    <TextView android:id="@+id/texto_canciones"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Juegos"
-        android:onClick="juegos"/>
+        android:gravity="center"
+        android:textSize="20dp"
+        android:text="Egunon"/>
 
-    <Button
+    <Button android:id="@+id/boton_grabar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Dia a dia"
-        android:onClick="diaadia"/>
+        android:text="Ikusi"
+        android:onClick="playVideo"/>
 
-    <Button
+    <LinearLayout android:id="@+id/canciones_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Hablando"
-        android:onClick="hablando"/>
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Traductor"
-        android:onClick="traductor"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+    </LinearLayout>
 
 </LinearLayout>

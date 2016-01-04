@@ -7,28 +7,29 @@
     android:orientation="vertical">
 
 
-    <Button
+    <TextView android:id="@+id/texto_palabras"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Juegos"
-        android:onClick="juegos"/>
+        android:gravity="center"
+        android:textSize="20dp"
+        android:text="Egunon"/>
 
-    <Button
+    <Button android:id="@+id/boton_grabar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Dia a dia"
-        android:onClick="diaadia"/>
+        android:text="Grabatu"
+        android:onClick="grabarAudio"/>
 
-    <Button
+    <Button android:id="@+id/boton_escuchar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hablando"
-        android:onClick="hablando"/>
+        android:text="Entzun"
+        android:onClick="playAudio"/>
 
-    <Button
+    <LinearLayout android:id="@+id/audio_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Traductor"
-        android:onClick="traductor"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+    </LinearLayout>
 
 </LinearLayout>
