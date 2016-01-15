@@ -3,27 +3,22 @@ package es.tta.abuapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import es.tta.abuapp.model.Business;
+import es.tta.abuapp.presentation.Data;
 
 
 public abstract class ModelActivity extends AppCompatActivity {
-    /*public static final String URL = "http://server:8080/ServidorTta";
-    protected RestClient rest;
-    protected Businness server;
-    protected Preferences prefs;
+    public static final String URL = "http://vps213926.ovh.net/AbuApp";
+    protected Client php;
+    protected Business server;
     protected Data data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         data =new Data(getIntent().getExtras());
-        rest = new RestClient(URL);
-        String auth = data.getAuthToken();
-        if(auth!=null)
-            rest.setAuthorization(auth);
-        server=new Businness(rest);
-        prefs=new Preferences(this);
-
-
+        php = new Client(URL);
+        server=new Business(php);
     }
 
     protected <T> void startModelActivity(Class<T> cls){
@@ -41,7 +36,7 @@ public abstract class ModelActivity extends AppCompatActivity {
         intent.putExtras(data.getBundle());
         return intent;
 
-    }*/
+    }
 
 }
 

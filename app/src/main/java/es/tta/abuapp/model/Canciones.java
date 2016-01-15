@@ -1,4 +1,4 @@
-package es.tta.abuapp;
+package es.tta.abuapp.model;
 
 public class Canciones
 {
