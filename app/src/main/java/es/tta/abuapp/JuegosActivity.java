@@ -2,11 +2,8 @@ package es.tta.abuapp;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import es.tta.abuapp.ProgressTask;
-import es.tta.abuapp.model.Business;
 import es.tta.abuapp.model.Parejas;
 
 public class JuegosActivity extends ModelActivity {

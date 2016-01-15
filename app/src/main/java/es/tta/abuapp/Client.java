@@ -1,6 +1,8 @@
 package es.tta.abuapp;
 
 import android.annotation.TargetApi;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Build;
 
 import org.json.JSONException;
@@ -11,8 +13,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
+
 
 
 public class Client {
@@ -53,4 +54,24 @@ public class Client {
         System.out.println(json);
         return json;
     }
+
+
+
+
+
+    //public Bitmap downloadFile(String imagen) {
+        /*Bitmap loadedImage;
+        try {
+            HttpURLConnection conn = getConnection(imagen);
+            loadedImage = BitmapFactory.decodeStream(conn.getInputStream());
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+                return loadedImage;
+            }
+
+    }*/
+
+
 }

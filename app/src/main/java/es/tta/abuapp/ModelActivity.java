@@ -3,22 +3,22 @@ package es.tta.abuapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import es.tta.abuapp.model.Business;
-import es.tta.abuapp.presentation.Data;
+import es.tta.abuapp.model.BusinessParejas;
+import es.tta.abuapp.presentation.DataParejas;
 
 
 public abstract class ModelActivity extends AppCompatActivity {
     public static final String URL = "http://vps213926.ovh.net/AbuApp";
     protected Client php;
-    protected Business server;
-    protected Data data;
+    protected BusinessParejas server;
+    protected DataParejas data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        data =new Data(getIntent().getExtras());
+        data =new DataParejas(getIntent().getExtras());
         php = new Client(URL);
-        server=new Business(php);
+        server=new BusinessParejas(php);
     }
 
     protected <T> void startModelActivity(Class<T> cls){

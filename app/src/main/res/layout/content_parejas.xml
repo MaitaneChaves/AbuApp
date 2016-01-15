@@ -15,42 +15,42 @@
         <ImageView android:id="@+id/foto_parejas1"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:src="@drawable/foto"
+
             android:gravity="center"
             android:onClick="guardarPareja"/>
 
         <ImageView android:id="@+id/foto_parejas2"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:src="@drawable/foto"
+
             android:gravity="center"
             android:onClick="guardarPareja"/>
 
         <ImageView android:id="@+id/foto_parejas3"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:src="@drawable/foto"
+
             android:gravity="center"
             android:onClick="guardarPareja"/>
 
         <ImageView android:id="@+id/foto_parejas4"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:src="@drawable/foto"
+
             android:gravity="center"
             android:onClick="guardarPareja"/>
 
         <ImageView android:id="@+id/foto_parejas5"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:src="@drawable/foto"
+
             android:gravity="center"
             android:onClick="guardarPareja"/>
 
         <ImageView android:id="@+id/foto_parejas6"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:src="@drawable/foto"
+
             android:gravity="center"
             android:onClick="guardarPareja"/>
 
