@@ -50,6 +50,7 @@ public class Client {
 
     public JSONObject getJson(String path) throws IOException, JSONException {
         JSONObject json=new JSONObject(getString(path));
+        System.out.println(json);
         return json;
     }
 }

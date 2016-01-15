@@ -1,20 +1,27 @@
 package es.tta.abuapp;
 
+import android.media.Image;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ParejasActivity extends AppCompatActivity {
+import es.tta.abuapp.model.Business;
+import es.tta.abuapp.model.Parejas;
+
+public class ParejasActivity extends ModelActivity {
 
     private int palabra=0;
     private int imagen=0;
+    private Business business;
+    //private Parejas pareja;
 
 
 
@@ -22,6 +29,29 @@ public class ParejasActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parejas);
+
+        /*new ProgressTask<Image>(this) {
+            @Override
+            protected  work() throws Exception {
+                pareja = business.getParejas(1);
+                return pareja;
+
+            }
+
+            @Override
+            protected void onFinish(Parejas pareja) {
+
+
+            }
+        }.execute();
+        try {
+
+        }catch (Exception e){
+            e.printStackTrace();
+        };*/
+
+        //(ImageView)imagen1=
+
     }
 
     public void guardarPareja(View view){
