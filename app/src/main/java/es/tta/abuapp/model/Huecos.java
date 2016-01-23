@@ -4,7 +4,6 @@ public class Huecos {
     private String palabra_completa;
     private String palabra_incompleta;
     private String imagen;
-    private int next_palabra;
 
     public String getPalabra_completa() {
         return palabra_completa;
@@ -29,16 +28,4 @@ public class Huecos {
     public void setImagen(String imagen) {
         this.imagen = imagen;
     }
-
-    public int getNext_palabra() {
-        return next_palabra;
-    }
-
-    public void setNext_palabra(int next_palabra) {
-        this.next_palabra = next_palabra;
-    }
-
-
-
-
 }

@@ -4,7 +4,6 @@ public class Canciones
 {
     private String titulo;
     private String video;
-    private int nextCanciones;
 
     public String getTitulo() {
         return titulo;
@@ -20,13 +19,5 @@ public class Canciones
 
     public void setVideo(String video) {
         this.video = video;
-    }
-
-    public int getNextCanciones() {
-        return nextCanciones;
-    }
-
-    public void setNextCanciones(int nextCanciones) {
-        this.nextCanciones = nextCanciones;
     }
 }

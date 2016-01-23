@@ -14,11 +14,11 @@
         android:textSize="20dp"
         android:text="Egunon"/>
 
-    <Button android:id="@+id/boton_grabar"
+    <Button android:id="@+id/boton_play"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Ikusi"
-        android:onClick="playVideo"/>
+        android:onClick="siguienteCancion"/>
 
     <LinearLayout android:id="@+id/canciones_layout"
         android:layout_width="match_parent"
