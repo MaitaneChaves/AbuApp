@@ -1,6 +1,7 @@
 package es.tta.abuapp;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
 
@@ -23,6 +24,8 @@ public class JuegosActivity extends ModelActivity {
     //HUECOS
     private BusinessHuecos server;
     private DataHuecos data;
+    private Bitmap imagenHuecos;
+    public Intent intentHuecos;
     //
 
     //PAREJAS//
@@ -69,7 +72,7 @@ public class JuegosActivity extends ModelActivity {
 
     public void huecos(View view)
     {
-        new ProgressTask<Huecos>(this)
+        /*new ProgressTask<Huecos>(this)
         {
             @Override
             protected Huecos work() throws Exception {
@@ -80,10 +83,13 @@ public class JuegosActivity extends ModelActivity {
             @Override
             protected void onFinish(Huecos hueco) {
                 data.putHuecos(hueco);
-                Intent intent=new Intent(getApplicationContext(), HuecosActivity.class);
-                intent.putExtras(data.getBundle());
-                startActivity(intent);
+                intentHuecos=new Intent(getApplicationContext(), HuecosActivity.class);
+                //intentHuecos.putExtras(data.getBundle());
+                //startActivity(intentHuecos);
             }
         }.execute();
+        */
+        Intent intent = new Intent(this,HuecosActivity.class);
+        startActivity(intent);
     }
 }

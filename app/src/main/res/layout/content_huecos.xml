@@ -8,15 +8,13 @@
 
     <ImageView android:id="@+id/foto_huecos"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/foto"/>
+        android:layout_height="wrap_content"/>
 
     <TextView android:id="@+id/texto_huecos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:textSize="20dp"
-        android:text="Pa_abr_"/>
+        android:textSize="20dp"/>
 
     <EditText android:id="@+id/respuesta_huecos"
         android:layout_width="wrap_content"
@@ -30,4 +28,9 @@
         android:text="Egiaztatu"
         android:onClick="comprobar"/>
 
+    <Button android:id="@+id/boton_prueba"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Prueba"
+        android:onClick="siguienteHueco"/>
 </LinearLayout>

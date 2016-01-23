@@ -56,9 +56,9 @@ public class Client {
     }
 
 
-    public  Bitmap downloadImage(String imagen) {
+    public  Bitmap downloadImage(String imagen)
+    {
         Bitmap loadedImage=null;
-        System.out.println("ENTRO A DESCARGAR IMAGEN!!!!!!!!!!!!!!!!!!!!1");
         try {
             HttpURLConnection conn = getConnection(imagen);
             loadedImage = BitmapFactory.decodeStream(conn.getInputStream());
