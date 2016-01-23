@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,6 +28,7 @@ public class ParejasActivity extends ModelActivity {
     private DataParejas data;
     private Bitmap foto1;
     private Parejas pareja;
+    ImageView imagen1;
 
     Map<Integer, String> comprobacion = new HashMap<Integer, String>();
 
@@ -36,22 +38,6 @@ public class ParejasActivity extends ModelActivity {
         data=new DataParejas(getIntent().getExtras());
         setContentView(R.layout.activity_parejas);
 
-       /* new ProgressTask<Bitmap>(this) {
-            @Override
-            protected Bitmap work() throws Exception {
-                foto1 = server.ge
-                return pareja;
-
-            }
-
-            @Override
-            protected void onFinish(Parejas pareja) {
-                //data.putStatus(s);
-                data.putParejas(pareja);
-                startModelActivity(ParejasActivity.class);
-
-            }
-        }.execute();*/
 
 
         TextView palabra1= (TextView)findViewById(R.id.palabra_parejas1);
@@ -61,7 +47,7 @@ public class ParejasActivity extends ModelActivity {
         TextView palabra5= (TextView)findViewById(R.id.palabra_parejas5);
         TextView palabra6= (TextView)findViewById(R.id.palabra_parejas6);
 
-        ImageView imagen1= (ImageView)findViewById(R.id.foto_parejas1);
+         imagen1= (ImageView)findViewById(R.id.foto_parejas1);
         ImageView imagen2= (ImageView)findViewById(R.id.foto_parejas2);
         ImageView imagen3= (ImageView)findViewById(R.id.foto_parejas3);
         ImageView imagen4= (ImageView)findViewById(R.id.foto_parejas4);
@@ -76,8 +62,26 @@ public class ParejasActivity extends ModelActivity {
         palabra5.setText(pareja.getPalabra5());
         palabra6.setText(pareja.getPalabra6());
 
-        imagen1.setImageURI(null);
-        imagen1.setImageURI(Uri.parse(URL+"/"+pareja.getImagen1()));
+
+        new ProgressTask<Bitmap>(this) {
+            @Override
+            protected Bitmap work() throws Exception {
+                foto1 = php.downloadFile("imagenes/katua.jpg");
+                return foto1;
+
+            }
+
+            @Override
+            protected void onFinish(Bitmap foto1) {
+                imagen1.setImageBitmap(foto1);
+
+            }
+        }.execute();
+
+
+        //imagen1.setImageBitmap(im1);
+
+        //imagen1.setImageURI(Uri.parse(URL+"/"+pareja.getImagen1()));
         imagen2.setImageURI(Uri.parse(URL+"/"+pareja.getImagen2()));
         imagen3.setImageURI(Uri.parse(URL+"/"+pareja.getImagen3()));
         imagen4.setImageURI(Uri.parse(URL+"/"+pareja.getImagen4()));

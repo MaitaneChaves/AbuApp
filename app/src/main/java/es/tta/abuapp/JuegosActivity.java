@@ -17,13 +17,18 @@ public class JuegosActivity extends ModelActivity {
 
     private Parejas pareja;
     private Huecos hueco;
-
-    //HUECOS
     private String URL = "http://vps213926.ovh.net/AbuApp";
     private Client php;
+
+    //HUECOS
     private BusinessHuecos server;
     private DataHuecos data;
     //
+
+    //PAREJAS//
+    private BusinessParejas serverParejas;
+    private DataParejas dataParejas;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,10 +43,10 @@ public class JuegosActivity extends ModelActivity {
 
     public void parejas(View view)
     {
-       /* new ProgressTask<Parejas>(this) {
+        new ProgressTask<Parejas>(this) {
             @Override
             protected Parejas work() throws Exception {
-                pareja = server.getParejas(1);
+                pareja = serverParejas.getParejas(1);
                 return pareja;
 
             }
@@ -49,15 +54,17 @@ public class JuegosActivity extends ModelActivity {
             @Override
             protected void onFinish(Parejas pareja) {
                 //data.putStatus(s);
-                data.putParejas(pareja);
-                startModelActivity(ParejasActivity.class);
+                dataParejas.putParejas(pareja);
+                Intent intent=new Intent(getApplicationContext(), ParejasActivity.class);
+                intent.putExtras(data.getBundle());
+                startActivity(intent);
 
             }
         }.execute();
         Intent intent = new Intent(this,ParejasActivity.class);
         startActivity(intent);
 
-        */
+
     }
 
     public void huecos(View view)

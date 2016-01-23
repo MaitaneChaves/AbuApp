@@ -56,22 +56,17 @@ public class Client {
     }
 
 
-
-
-
-    //public Bitmap downloadFile(String imagen) {
-        /*Bitmap loadedImage;
+    public  Bitmap downloadImage(String imagen) {
+        Bitmap loadedImage=null;
+        System.out.println("ENTRO A DESCARGAR IMAGEN!!!!!!!!!!!!!!!!!!!!1");
         try {
             HttpURLConnection conn = getConnection(imagen);
             loadedImage = BitmapFactory.decodeStream(conn.getInputStream());
 
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-                return loadedImage;
-            }
-
-    }*/
-
+        }
+            return loadedImage;
+    }
 
 }
