@@ -12,9 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 import es.tta.abuapp.model.BusinessCanciones;
-import es.tta.abuapp.model.BusinessHuecos;
 import es.tta.abuapp.model.Canciones;
-import es.tta.abuapp.presentation.DataHuecos;
 
 public class CancionesActivity extends AppCompatActivity
 {
@@ -26,7 +24,7 @@ public class CancionesActivity extends AppCompatActivity
 
     private int num_pag = 1;
     private TextView tituloView;
-    private String urlCancion;
+    private VideoView video;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,15 +38,9 @@ public class CancionesActivity extends AppCompatActivity
         //data = new DataCanciones(getIntent().getExtras());
 
         //siguienteCancion(View view);
-    }
 
-
-    public void playVideo(View view)
-    {
-        VideoView video = new VideoView(this);
-        String[] partes = urlCancion.split("\\/");
-        Toast.makeText(this, URL + "/videos/" + partes[1], Toast.LENGTH_SHORT).show();
-        video.setVideoURI(Uri.parse(URL + "/videos/" + partes[1]));
+        //CAMBIADO DE SITIO
+        video = new VideoView(this);
         ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT);
         video.setLayoutParams(params);
 
@@ -70,8 +62,17 @@ public class CancionesActivity extends AppCompatActivity
         };
         controller.setAnchorView(video);
         video.setMediaController(controller);
+    }
 
+
+    public void playVideo(View view, String urlCancion)
+    {
         LinearLayout layout = (LinearLayout)findViewById(R.id.canciones_layout);
+        layout.removeView(video);
+
+        String urlCompleta = URL + "/" + urlCancion;
+        video.setVideoURI(Uri.parse(urlCompleta));
+
         layout.addView(video);
         video.start();
     }
@@ -79,6 +80,8 @@ public class CancionesActivity extends AppCompatActivity
 
     public void siguienteCancion(View view)
     {
+        final View v = view;
+
         new ProgressTask<Canciones>(this)
         {
             @Override
@@ -90,18 +93,11 @@ public class CancionesActivity extends AppCompatActivity
             @Override
             protected void onFinish(Canciones cancion) {
                 tituloView.setText(cancion.getTitulo());
-                urlCancion = cancion.getVideo();
-
-                //
-                String[] partes = urlCancion.split("\\/");
-                System.out.println(URL + "/videos/" + partes[1]);
-                //
+                String urlCancion = cancion.getVideo();
+                playVideo(v, urlCancion);
             }
         }.execute();
 
         num_pag++;
-
-        playVideo(view);
     }
-
 }
