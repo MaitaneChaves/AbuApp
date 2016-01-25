@@ -11,19 +11,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Comprar el pan"
-        android:onClick="mostrarFrases"/>
+        android:onClick="mostrarFrasesPan"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Ir al bar"
-        android:onClick="mostrarFrases"/>
+        android:onClick="mostrarFrasesBar"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Ir al medico"
-        android:onClick="mostrarFrases"/>
+        android:onClick="mostrarFrasesMedico"/>
 
 </LinearLayout>
 

@@ -4,8 +4,6 @@ public class Frases {
     private String frase_euskera;
     private String frase_castellano;
     private String audio;
-    private int next_frases;
-    private String lugar;
 
     public String getFrase_euskera() {
         return frase_euskera;
@@ -30,23 +28,4 @@ public class Frases {
     public void setAudio(String audio) {
         this.audio = audio;
     }
-
-    public int getNext_frases() {
-        return next_frases;
-    }
-
-    public void setNext_frases(int next_frases) {
-        this.next_frases = next_frases;
-    }
-
-    public String getLugar() {
-        return lugar;
-    }
-
-    public void setLugar(String lugar) {
-        this.lugar = lugar;
-    }
-
-
-
 }

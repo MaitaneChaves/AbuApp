@@ -13,11 +13,13 @@ import es.tta.abuapp.Client;
 public class BusinessAudios {
 
     private Client php;
-    private Audios audios=new Audios();
+    private Audios audios = new Audios();
 
-    public BusinessAudios(Client php){this.php=php;}
+    public BusinessAudios(Client php) {
+        this.php = php;
+    }
 
-    public Audios getAudios (int indice) throws IOException, JSONException {
+    public Audios getAudios(int indice) throws IOException, JSONException {
         JSONObject json = php.getJson(String.format("audios.php?indice=%d", indice));
         audios.setTitulo(json.getString("palabra"));
         audios.setAudio(json.getString("file"));

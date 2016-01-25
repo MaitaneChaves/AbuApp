@@ -20,7 +20,7 @@ import es.tta.abuapp.presentation.DataParejas;
 public class ParejasActivity extends ModelActivity {
 
     public static final String URL = "http://vps213926.ovh.net/AbuApp";
-    private Client php= new Client(URL);;
+    private Client php= new Client(URL);
 
     private int palabra=0;
     private int imagen=0;
@@ -81,7 +81,9 @@ public class ParejasActivity extends ModelActivity {
        new ProgressTask<Bitmap>(this) {
             @Override
             protected Bitmap work() throws Exception {
+
                 foto1 = php.downloadImage(pareja.getImagen1());
+
                 return foto1;
 
             }
