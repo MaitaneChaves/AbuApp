@@ -28,8 +28,6 @@ public class DataParejas {
     private final static String EXTRA_PAREJAS_COMP6 = "es.tta.abuapp.extra_parejas_comp6";
 
 
-    private final static String EXTRA_PAREJAS_NEXT = "es.tta.abuapp.extra_parejas_next";
-
 
     private final Bundle bundle;
 
@@ -64,13 +62,11 @@ public class DataParejas {
         bundle.putString(EXTRA_PAREJAS_COMP5, parejas.getComp5());
         bundle.putString(EXTRA_PAREJAS_COMP6, parejas.getComp6());
 
-        bundle.putInt(EXTRA_PAREJAS_NEXT, parejas.getNext_pareja());
 
     }
 
     public Parejas getParejas(){
         Parejas pareja=new Parejas();
-        pareja.setNext_pareja(bundle.getInt(EXTRA_PAREJAS_NEXT));
 
         pareja.setPalabra1(bundle.getString(EXTRA_PAREJAS_PALABRA1));
         pareja.setPalabra2(bundle.getString(EXTRA_PAREJAS_PALABRA2));

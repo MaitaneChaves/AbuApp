@@ -39,6 +39,8 @@ public class JuegosActivity extends ModelActivity {
         php = new Client(URL);
         server = new BusinessHuecos(php);
         data = new DataHuecos(getIntent().getExtras());
+        serverParejas=new BusinessParejas(php);
+        dataParejas=new DataParejas(getIntent().getExtras());
     }
 
     public void parejas(View view)
@@ -56,13 +58,13 @@ public class JuegosActivity extends ModelActivity {
                 //data.putStatus(s);
                 dataParejas.putParejas(pareja);
                 Intent intent=new Intent(getApplicationContext(), ParejasActivity.class);
-                intent.putExtras(data.getBundle());
+                intent.putExtras(dataParejas.getBundle());
+                System.out.println("LLAMO A START ACTIVITY");
                 startActivity(intent);
 
             }
         }.execute();
-        Intent intent = new Intent(this,ParejasActivity.class);
-        startActivity(intent);
+
 
 
     }

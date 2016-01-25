@@ -103,6 +103,12 @@
             android:gravity="center"
             android:onClick="guardarPareja" />
 
+        <Button android:id="@+id/siguiente_parejas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Hurrengoa"
+            android:onClick="siguiente_parejas"/>
+
     </GridLayout>
 
 </LinearLayout>
