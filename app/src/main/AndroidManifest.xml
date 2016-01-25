@@ -57,6 +57,10 @@
         <activity
             android:name=".FrasesDiaADiaActivity"
             android:label="@string/title_activity_frases_dia_adia"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".FraseSeleccionadaActivity"
+            android:label="@string/title_activity_frase_seleccionada"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

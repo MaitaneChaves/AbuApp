@@ -3,18 +3,16 @@ package es.tta.abuapp;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 
-import es.tta.abuapp.ProgressTask;
 import es.tta.abuapp.model.BusinessParejas;
 import es.tta.abuapp.model.BusinessHuecos;
 import es.tta.abuapp.model.Huecos;
 import es.tta.abuapp.model.Parejas;
-import es.tta.abuapp.presentation.DataParejas;
-import es.tta.abuapp.presentation.DataHuecos;
 
-public class JuegosActivity extends ModelActivity {
+public class JuegosActivity extends AppCompatActivity {
 
     private Parejas pareja;
     private Huecos hueco;
@@ -23,14 +21,14 @@ public class JuegosActivity extends ModelActivity {
 
     //HUECOS
     private BusinessHuecos server;
-    private DataHuecos data;
+    //private DataHuecos data;
     private Bitmap imagenHuecos;
     public Intent intentHuecos;
     //
 
     //PAREJAS//
     private BusinessParejas serverParejas;
-    private DataParejas dataParejas;
+    //private DataParejas dataParejas;
 
 
     @Override
@@ -41,12 +39,12 @@ public class JuegosActivity extends ModelActivity {
         //HUECOS
         php = new Client(URL);
         server = new BusinessHuecos(php);
-        data = new DataHuecos(getIntent().getExtras());
+        //data = new DataHuecos(getIntent().getExtras());
     }
 
     public void parejas(View view)
     {
-        new ProgressTask<Parejas>(this) {
+        /*new ProgressTask<Parejas>(this) {
             @Override
             protected Parejas work() throws Exception {
                 pareja = serverParejas.getParejas(1);
@@ -65,7 +63,7 @@ public class JuegosActivity extends ModelActivity {
             }
         }.execute();
         Intent intent = new Intent(this,ParejasActivity.class);
-        startActivity(intent);
+        startActivity(intent);*/
 
 
     }

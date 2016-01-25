@@ -4,20 +4,17 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import es.tta.abuapp.model.BusinessHuecos;
 import es.tta.abuapp.model.Huecos;
-import es.tta.abuapp.presentation.DataHuecos;
 
 public class HuecosActivity extends AppCompatActivity {
 
     public static final String URL = "http://vps213926.ovh.net/AbuApp";
     private Client php= new Client(URL);
     private BusinessHuecos server;
-    private DataHuecos data;
     private Huecos hueco;
 
     private Bitmap imagen;
@@ -41,15 +38,15 @@ public class HuecosActivity extends AppCompatActivity {
 
         php = new Client(URL);
         server = new BusinessHuecos(php);
-        data = new DataHuecos(getIntent().getExtras());
 
         //siguienteHueco(View view);
     }
 
     public void comprobar(View view)
     {
-        String respuesta = respuestaView.getText().toString().toLowerCase();
-        if(respuesta.compareTo(palabra_completa)==0)
+        String respuesta = respuestaView.getText().toString();
+        boolean correcto = server.comprobar(hueco.getPalabra_completa(), respuesta);
+        if(correcto)
         {
             Toast.makeText(this,"CORRECTO", Toast.LENGTH_SHORT).show();
         }

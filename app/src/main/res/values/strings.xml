@@ -12,4 +12,5 @@
     <string name="no_app">No hay ninguna app que ejecute el microfono</string>
     <string name="no_micro">El dispositivo no tiene microfono</string>
     <string name="palabra_parejas">Tigre</string>
+    <string name="title_activity_frase_seleccionada">FraseSeleccionadaActivity</string>
 </resources>

@@ -1,25 +1,23 @@
 package es.tta.abuapp;
 
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Map;
 
 import es.tta.abuapp.model.BusinessParejas;
 import es.tta.abuapp.model.Parejas;
-import es.tta.abuapp.presentation.DataParejas;
 
-public class ParejasActivity extends ModelActivity {
+public class ParejasActivity extends AppCompatActivity {
 
-    public static final String URL = "http://vps213926.ovh.net/AbuApp";
+    /*public static final String URL = "http://vps213926.ovh.net/AbuApp";
     private Client php= new Client(URL);
 
     private int palabra=0;
@@ -127,5 +125,5 @@ public class ParejasActivity extends ModelActivity {
         imagen=0;
         palabra=0;
     }
-
+*/
 }

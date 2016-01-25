@@ -7,17 +7,22 @@
     android:orientation="vertical">
 
 
-    <TextView android:id="@+id/titulo_diaadia"
+    <TextView android:id="@+id/fraseSeleccionada_castellano"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:textSize="20dp"/>
+
+    <TextView android:id="@+id/fraseSeleccionada_euskera"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:textSize="30dp"/>
+        android:textSize="20dp"/>
 
-    <LinearLayout android:id="@+id/frases_layout"
+    <TextView android:id="@+id/fraseSeleccionada_audio"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:onClick="verFrase">
-    </LinearLayout>
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="20dp"/>
 
 </LinearLayout>
