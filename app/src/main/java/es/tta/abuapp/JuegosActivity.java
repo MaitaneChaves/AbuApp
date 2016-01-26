@@ -39,7 +39,6 @@ public class JuegosActivity extends AppCompatActivity {
         //HUECOS
         php = new Client(URL);
         server = new BusinessHuecos(php);
-        //data = new DataHuecos(getIntent().getExtras());
     }
 
     public void parejas(View view)
@@ -57,15 +56,15 @@ public class JuegosActivity extends AppCompatActivity {
                 //data.putStatus(s);
                 dataParejas.putParejas(pareja);
                 Intent intent=new Intent(getApplicationContext(), ParejasActivity.class);
-                intent.putExtras(data.getBundle());
+                intent.putExtras(dataParejas.getBundle());
+                System.out.println("LLAMO A START ACTIVITY");
                 startActivity(intent);
 
             }
-        }.execute();
+        }.execute();*/
+
         Intent intent = new Intent(this,ParejasActivity.class);
-        startActivity(intent);*/
-
-
+        startActivity(intent);
     }
 
     public void huecos(View view)
