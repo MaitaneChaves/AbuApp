@@ -30,11 +30,13 @@ public class BusinessParejas {
 
     public BusinessParejas(Client php){this.php=php;}
 
-    public int getMAX_PAG() {
+    public int getMAX_PAG()
+    {
         return MAX_PAG;
     }
 
-    public Parejas getParejas (int indice) throws IOException, JSONException {
+    public Parejas getParejas (int indice) throws IOException, JSONException
+    {
         JSONObject json = php.getJson(String.format("parejas.php?indice=%d", indice));
         pareja.setImagen1(json.getString("i1"));
         pareja.setImagen2(json.getString("i2"));
@@ -60,13 +62,16 @@ public class BusinessParejas {
         return pareja;
     }
 
-    public boolean comprueba(String palabra, String comprobacion){
-        if (palabra.contentEquals(comprobacion)) {
+    public boolean comprueba(String palabra, String comprobacion)
+    {
+        if (palabra.contentEquals(comprobacion))
+        {
             parejas_correctas++;
             return true;
         }
-        else
+        else {
             return false;
+        }
     }
 
 }

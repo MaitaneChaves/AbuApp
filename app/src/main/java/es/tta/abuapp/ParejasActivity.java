@@ -45,7 +45,8 @@ public class ParejasActivity extends ModelActivity {
     Map<Integer, String> comprobacion = new HashMap<Integer, String>();
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parejas);
 
@@ -67,24 +68,29 @@ public class ParejasActivity extends ModelActivity {
         cargaJuego();
     }
 
-    public void guardarPareja(View view){
+    public void guardarPareja(View view)
+    {
         int pulsado=view.getId();
 
         //si se ha pulsado la imagen se guarda en la variable imagen y si es un texto se guarda en palabra
-        if(pulsado>=R.id.foto_parejas1&&pulsado<=R.id.foto_parejas6) {
+        if(pulsado>=R.id.foto_parejas1&&pulsado<=R.id.foto_parejas6)
+        {
             imagen = pulsado;
         }
 
-        else if(pulsado>=R.id.palabra_parejas1&&pulsado<=R.id.palabra_parejas6) {
+        else if(pulsado>=R.id.palabra_parejas1&&pulsado<=R.id.palabra_parejas6)
+        {
             palabra = pulsado;
         }
 
         //si se han pulsado las dos se llama a comprueba
-        if(imagen!=0&&palabra!=0)
+        if(imagen!=0&&palabra!=0) {
             comprueba();
+        }
     }
 
-    private void comprueba(){
+    private void comprueba()
+    {
         TextView comp=(TextView)findViewById(palabra);
         ImageView im=(ImageView)findViewById(imagen);
         String pareja=comprobacion.get(imagen);
@@ -92,30 +98,34 @@ public class ParejasActivity extends ModelActivity {
         //para comprobar se llama al modelo
         boolean correcto=server.comprueba(pareja,comp.getText().toString());
 
-        if (correcto) {
+        if (correcto)
+        {
 
             comp.setVisibility(View.INVISIBLE);
             im.setVisibility(View.INVISIBLE);
             Toast.makeText(getApplicationContext(), "Correcto", Toast.LENGTH_SHORT).show();
-            if(server.getParejas_correctas()==server.getMax_parejas()){
+            if(server.getParejas_correctas()==server.getMax_parejas())
+            {
                 server.setParejas_correctas(0);
                 cargaJuego();
             }
         }
-        else
-            Toast.makeText(getApplicationContext(),"Incorrecto",Toast.LENGTH_SHORT).show();
-
+        else {
+            Toast.makeText(getApplicationContext(), "Incorrecto", Toast.LENGTH_SHORT).show();
+        }
         imagen=0;
         palabra=0;
     }
 
-    public void siguiente_parejas(View view){
-
-
+    public void siguiente_parejas(View view)
+    {
 
         if(pagina<=server.getMAX_PAG())
+        {
             cargaJuego();
-        else{
+        }
+        else
+        {
             LinearLayout layout=(LinearLayout)findViewById(R.id.layout_parejas);
             layout.removeAllViews();
             TextView final_parejas=new TextView(this);
@@ -126,20 +136,24 @@ public class ParejasActivity extends ModelActivity {
         }
     }
 
-    public void cargaJuego(){
+    public void cargaJuego()
+    {
 
         if(pagina<=server.getMAX_PAG())
         {
-            new ProgressTask<Parejas>(this) {
+            new ProgressTask<Parejas>(this)
+            {
                 @Override
-                protected Parejas work() throws Exception {
+                protected Parejas work() throws Exception
+                {
                     pareja = server.getParejas(pagina);
                     pagina++;
                     return pareja;
                 }
 
                 @Override
-                protected void onFinish(Parejas pareja) {
+                protected void onFinish(Parejas pareja)
+                {
                     imagen1.setVisibility(View.VISIBLE);
                     imagen2.setVisibility(View.VISIBLE);
                     imagen3.setVisibility(View.VISIBLE);
@@ -170,86 +184,105 @@ public class ParejasActivity extends ModelActivity {
                 }
             }.execute();
 
-            new ProgressTask<Bitmap>(this) {
+            new ProgressTask<Bitmap>(this)
+            {
                 @Override
-                protected Bitmap work() throws Exception {
+                protected Bitmap work() throws Exception
+                {
                     foto1 = php.downloadImage(pareja.getImagen1());
                     return foto1;
                 }
 
                 @Override
-                protected void onFinish(Bitmap foto1) {
+                protected void onFinish(Bitmap foto1)
+                {
                     imagen1.setImageBitmap(foto1);
                 }
             }.execute();
 
-            new ProgressTask<Bitmap>(this) {
+            new ProgressTask<Bitmap>(this)
+            {
                 @Override
-                protected Bitmap work() throws Exception {
+                protected Bitmap work() throws Exception
+                {
                     foto1 = php.downloadImage(pareja.getImagen2());
                     return foto1;
                 }
 
                 @Override
-                protected void onFinish(Bitmap foto1) {
+                protected void onFinish(Bitmap foto1)
+                {
                     imagen2.setImageBitmap(foto1);
                 }
             }.execute();
 
-            new ProgressTask<Bitmap>(this) {
+            new ProgressTask<Bitmap>(this)
+            {
                 @Override
-                protected Bitmap work() throws Exception {
+                protected Bitmap work() throws Exception
+                {
                     foto1 = php.downloadImage(pareja.getImagen3());
                     return foto1;
                 }
 
                 @Override
-                protected void onFinish(Bitmap foto1) {
+                protected void onFinish(Bitmap foto1)
+                {
                     imagen3.setImageBitmap(foto1);
                 }
             }.execute();
 
-            new ProgressTask<Bitmap>(this) {
+            new ProgressTask<Bitmap>(this)
+            {
                 @Override
-                protected Bitmap work() throws Exception {
+                protected Bitmap work() throws Exception
+                {
                     foto1 = php.downloadImage(pareja.getImagen4());
                     return foto1;
                 }
 
                 @Override
-                protected void onFinish(Bitmap foto1) {
+                protected void onFinish(Bitmap foto1)
+                {
                     imagen4.setImageBitmap(foto1);
                 }
             }.execute();
 
-            new ProgressTask<Bitmap>(this) {
+            new ProgressTask<Bitmap>(this)
+            {
                 @Override
-                protected Bitmap work() throws Exception {
+                protected Bitmap work() throws Exception
+                {
                     foto1 = php.downloadImage(pareja.getImagen5());
                     return foto1;
                 }
 
                 @Override
-                protected void onFinish(Bitmap foto1) {
+                protected void onFinish(Bitmap foto1)
+                {
                     imagen5.setImageBitmap(foto1);
                 }
             }.execute();
 
-            new ProgressTask<Bitmap>(this) {
+            new ProgressTask<Bitmap>(this)
+            {
                 @Override
-                protected Bitmap work() throws Exception {
+                protected Bitmap work() throws Exception
+                {
                     foto1 = php.downloadImage(pareja.getImagen6());
                     return foto1;
                 }
 
                 @Override
-                protected void onFinish(Bitmap foto1) {
+                protected void onFinish(Bitmap foto1)
+                {
                     imagen6.setImageBitmap(foto1);
                 }
             }.execute();
         }
 
-        else{
+        else
+        {
             LinearLayout layout=(LinearLayout)findViewById(R.id.layout_parejas);
             layout.removeAllViews();
             TextView final_parejas=new TextView(this);

@@ -11,19 +11,22 @@ public abstract class ProgressTask<T> extends AsyncTask<Void, Void, T> {
     private final ProgressDialog dialog;
     private Exception e;
 
-    public ProgressTask(Context context){
+    public ProgressTask(Context context)
+    {
         this.context=context;
         dialog = new ProgressDialog(context);
         dialog.setMessage("Conectando...");
     }
 
     @Override
-    protected void onPreExecute(){
+    protected void onPreExecute()
+    {
         dialog.show();
     }
 
     @Override
-    protected T doInBackground(Void... params) {
+    protected T doInBackground(Void... params)
+    {
         T result =null;
         try{
             result=work();
@@ -34,7 +37,8 @@ public abstract class ProgressTask<T> extends AsyncTask<Void, Void, T> {
     }
 
     @Override
-    protected void onPostExecute(T result){
+    protected void onPostExecute(T result)
+    {
         if(dialog.isShowing())
             dialog.dismiss();
         if(e!=null)

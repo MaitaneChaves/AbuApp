@@ -18,7 +18,8 @@ import android.widget.Toast;
 import es.tta.abuapp.model.Audios;
 import es.tta.abuapp.model.BusinessAudios;
 
-public class PalabrasActivity extends ModelActivity {
+public class PalabrasActivity extends ModelActivity
+{
     private BusinessAudios server=new BusinessAudios(php);
 
     private Audios audio;
@@ -33,7 +34,8 @@ public class PalabrasActivity extends ModelActivity {
     AudioPlayer ap;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_palabras);
 
@@ -41,11 +43,15 @@ public class PalabrasActivity extends ModelActivity {
         cargaPalabras();
     }
 
-    public void siguiente(View view){
+    public void siguiente(View view)
+    {
         pagina++;
         if(pagina<=server.getMAX_PAG())
+        {
             cargaPalabras();
-        else{
+        }
+        else
+        {
             LinearLayout layout=(LinearLayout)findViewById(R.id.layout_audio);
             layout.removeAllViews();
             System.out.println("FINAL");
@@ -58,15 +64,19 @@ public class PalabrasActivity extends ModelActivity {
 
     }
 
-    public void cargaPalabras(){
+    public void cargaPalabras()
+    {
         LinearLayout audio_view=(LinearLayout)findViewById(R.id.audio);
-        if(ap!=null)
+        if(ap!=null) {
             ap.removeController();
+        }
         //audio_view.setVisibility(View.GONE);
         texto_palabras=(TextView)findViewById(R.id.texto_palabras);
-        new ProgressTask<Audios>(this) {
+        new ProgressTask<Audios>(this)
+        {
             @Override
-            protected Audios work() throws Exception {
+            protected Audios work() throws Exception
+            {
                 audio = server.getAudios(pagina);
                 return audio;
 
@@ -80,41 +90,52 @@ public class PalabrasActivity extends ModelActivity {
     }
 
     //FUNCIONES DE GRABAR Y REPRODUCIR
-    public void grabarAudio(View view) {
-        if(!getPackageManager().hasSystemFeature(PackageManager.FEATURE_MICROPHONE)) {
+    public void grabarAudio(View view)
+    {
+        if(!getPackageManager().hasSystemFeature(PackageManager.FEATURE_MICROPHONE))
+        {
             Toast.makeText(this, R.string.no_micro, Toast.LENGTH_SHORT).show();
         }
-        else {
+        else
+        {
             Intent intent = new Intent(MediaStore.Audio.Media.RECORD_SOUND_ACTION);
-            if(intent.resolveActivity(getPackageManager())!=null) {
+            if(intent.resolveActivity(getPackageManager())!=null)
+            {
                 startActivityForResult(intent, AUDIO_REQUEST_CODE);
             }
-            else {
+            else
+            {
                 Toast.makeText(this, R.string.no_app, Toast.LENGTH_SHORT).show();
             }
         }
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(resultCode!= Activity.RESULT_OK) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        if(resultCode!= Activity.RESULT_OK)
+        {
             Toast.makeText(this, "Error al grabar el audio", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        switch(requestCode) {
+        switch(requestCode)
+        {
             case AUDIO_REQUEST_CODE:
-                if(ap!=null)
+                if(ap!=null) {
                     ap.removeController();
+                }
                 playAudio(data.getData());
                 break;
         }
     }
 
-    public void playAudio(Uri uri) {
+    public void playAudio(Uri uri)
+    {
         LinearLayout audio=(LinearLayout)findViewById(R.id.audio);
-        if(ap!=null)
+        if(ap!=null) {
             ap.removeController();
+        }
          ap = new AudioPlayer(audio);
         try {
             Cursor cursor = getContentResolver().query(uri, null, null, null, null);
@@ -129,10 +150,12 @@ public class PalabrasActivity extends ModelActivity {
         }
     }
 
-    public void playAudio(View view) {
+    public void playAudio(View view)
+    {
         LinearLayout audio_view=(LinearLayout)findViewById(R.id.audio);
-        if(ap!=null)
+        if(ap!=null){
             ap.removeController();
+        }
         ap = new AudioPlayer(audio_view);
 
         try {

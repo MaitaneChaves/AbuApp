@@ -18,14 +18,16 @@ public class Client {
 
     public Client(String baseURL){this.baseURL=baseURL;}
     
-    private HttpURLConnection getConnection(String path) throws IOException {
+    private HttpURLConnection getConnection(String path) throws IOException
+    {
         URL url=new URL(String.format("%s/%s",baseURL,path));
         HttpURLConnection conn=(HttpURLConnection)url.openConnection();
         return conn;
     }
 
     @TargetApi(Build.VERSION_CODES.KITKAT)
-    public String getString(String path) throws IOException{
+    public String getString(String path) throws IOException
+    {
         HttpURLConnection conn=null;
         try{
             conn=getConnection(path);
@@ -40,13 +42,15 @@ public class Client {
         }
     }
 
-    public JSONObject getJson(String path) throws IOException, JSONException {
+    public JSONObject getJson(String path) throws IOException, JSONException
+    {
         JSONObject json=new JSONObject(getString(path));
         System.out.println(json);
         return json;
     }
 
-    public  Bitmap downloadImage(String imagen) {
+    public  Bitmap downloadImage(String imagen)
+    {
         Bitmap loadedImage=null;
         try {
             HttpURLConnection conn = getConnection(imagen);
