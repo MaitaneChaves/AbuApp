@@ -5,9 +5,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import es.tta.abuapp.Client;
 
-/**
- * Created by Naiara on 24/01/2016.
- */
+
 public class BusinessFrases
 {
     private Client php;
@@ -45,15 +43,15 @@ public class BusinessFrases
         int max_frases = 0;
         if(tipo.compareTo("medico")==0)
         {
-            max_frases = 3; //PONER VALOR VERDADERO
+            max_frases = 3; //Valor de bbdd
         }
         else if(tipo.compareTo("bar")==0)
         {
-            max_frases = 3; //PONER VALOR VERDADERO
+            max_frases = 6; //Valor de bbdd
         }
         else if(tipo.compareTo("pan")==0)
         {
-            max_frases = 3; //PONER VALOR VERDADERO
+            max_frases = 6; //Valor de bbdd
         }
         return max_frases;
     }

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:id="@+id/layout_huecos_entero">
 
     <ImageView android:id="@+id/foto_huecos"
         android:layout_width="wrap_content"
@@ -28,9 +29,9 @@
         android:text="Egiaztatu"
         android:onClick="comprobar"/>
 
-    <Button android:id="@+id/boton_prueba"
+    <Button android:id="@+id/boton_siguiente_hueco"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Prueba"
-        android:onClick="siguienteHueco"/>
+        android:text="Hurrengoa"
+        android:onClick="cargarHueco"/>
 </LinearLayout>
