@@ -65,6 +65,13 @@ public class ParejasActivity extends AppCompatActivity {
         imagen5=(ImageView)findViewById(R.id.foto_parejas5);
         imagen6=(ImageView)findViewById(R.id.foto_parejas6);
 
+        palabra1.setText(pareja.getPalabra1());
+        palabra2.setText(pareja.getPalabra2());
+        palabra3.setText(pareja.getPalabra3());
+        palabra4.setText(pareja.getPalabra4());
+        palabra5.setText(pareja.getPalabra5());
+        palabra6.setText(pareja.getPalabra6());
+        System.out.println("CARGO LAS PALABRAS VOY A DESCARGAR LAS FOTOS");
         new ProgressTask<Parejas>(this) {
             @Override
             protected Parejas work() throws Exception {
@@ -204,6 +211,9 @@ public class ParejasActivity extends AppCompatActivity {
         palabra=0;
     }
 
+
+
+
     public void siguiente_parejas(View view){
         pagina++;
         new ProgressTask<Parejas>(this) {
@@ -216,7 +226,6 @@ public class ParejasActivity extends AppCompatActivity {
 
             @Override
             protected void onFinish(Parejas pareja) {
-
                 palabra1.setText(pareja.getPalabra1());
                 palabra2.setText(pareja.getPalabra2());
                 palabra3.setText(pareja.getPalabra3());
@@ -323,6 +332,7 @@ public class ParejasActivity extends AppCompatActivity {
         comprobacion.put(R.id.foto_parejas5, pareja.getComp5());
         comprobacion.put(R.id.foto_parejas6, pareja.getComp6());
     }
+
 
 
 }

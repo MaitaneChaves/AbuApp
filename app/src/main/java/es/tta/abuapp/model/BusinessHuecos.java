@@ -1,5 +1,8 @@
 package es.tta.abuapp.model;
 
+import android.view.View;
+import android.widget.Toast;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -25,5 +28,17 @@ public class BusinessHuecos
         hueco.setPalabra_incompleta(json.getString("inc"));
         hueco.setImagen(json.getString("loc"));
         return hueco;
+    }
+
+    public boolean comprobar(String palabra_completa, String respuesta)
+    {
+        if(respuesta.toLowerCase().compareTo(palabra_completa)==0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

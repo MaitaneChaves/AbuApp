@@ -11,7 +11,7 @@ import es.tta.abuapp.model.BusinessParejas;
 import es.tta.abuapp.model.BusinessHuecos;
 import es.tta.abuapp.model.Huecos;
 import es.tta.abuapp.model.Parejas;
-import es.tta.abuapp.presentation.DataHuecos;
+
 
 public class JuegosActivity extends AppCompatActivity {
 
@@ -22,7 +22,7 @@ public class JuegosActivity extends AppCompatActivity {
 
     //HUECOS
     private BusinessHuecos server;
-    private DataHuecos data;
+    //private DataHuecos data;
     private Bitmap imagenHuecos;
     public Intent intentHuecos;
     //
@@ -39,7 +39,6 @@ public class JuegosActivity extends AppCompatActivity {
         //HUECOS
         php = new Client(URL);
         server = new BusinessHuecos(php);
-        data = new DataHuecos(getIntent().getExtras());
         serverParejas=new BusinessParejas(php);
 
     }
@@ -64,6 +63,7 @@ public class JuegosActivity extends AppCompatActivity {
 
             }
         }.execute();*/
+
 
         Intent intent=new Intent(getApplicationContext(), ParejasActivity.class);
         startActivity(intent);
