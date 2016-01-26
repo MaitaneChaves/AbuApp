@@ -5,8 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import es.tta.abuapp.presentador_vista.ParejasActivity;
-
 public class JuegosActivity extends AppCompatActivity {
 
     @Override

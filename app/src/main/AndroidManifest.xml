@@ -35,7 +35,7 @@
             android:label="@string/title_activity_juegos"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".presentador_vista.ParejasActivity"
+            android:name=".ParejasActivity"
             android:label="@string/title_activity_parejas"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
