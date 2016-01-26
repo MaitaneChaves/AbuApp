@@ -4,14 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/fondo">
 
 
     <TextView android:id="@+id/titulo_diaadia"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:textSize="40dp"/>
+        android:textSize="40dp"
+        android:textColor="@color/white"/>
 
     <LinearLayout android:id="@+id/frases_layout"
         android:layout_width="match_parent"

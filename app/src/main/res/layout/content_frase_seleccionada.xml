@@ -4,24 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/fondo">
 
 
     <TextView android:id="@+id/fraseSeleccionada_castellano"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:gravity="center"
-    android:textSize="20dp"/>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:textColor="@color/white"/>
 
     <TextView android:id="@+id/fraseSeleccionada_euskera"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:textSize="20dp"/>
+        android:textSize="20dp"
+        android:textColor="@color/white"/>
 
-    <Button android:id="@+id/boton_frase_seleccionada"
+    <Button android:id="@+id/boton_oir_frase"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:text="Entzun"
         android:onClick="playAudio"/>
 
