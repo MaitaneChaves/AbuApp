@@ -51,7 +51,6 @@ public class ParejasActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parejas);
 
-
         palabra1= (TextView)findViewById(R.id.palabra_parejas1);
         palabra2= (TextView)findViewById(R.id.palabra_parejas2);
         palabra3= (TextView)findViewById(R.id.palabra_parejas3);
@@ -71,7 +70,6 @@ public class ParejasActivity extends AppCompatActivity {
             protected Parejas work() throws Exception {
                 pareja = server.getParejas(1);
                 return pareja;
-
             }
 
             @Override
@@ -98,19 +96,13 @@ public class ParejasActivity extends AppCompatActivity {
        new ProgressTask<Bitmap>(this) {
             @Override
             protected Bitmap work() throws Exception {
-
                 foto1 = php.downloadImage(pareja.getImagen1());
-
                 return foto1;
-
             }
 
             @Override
             protected void onFinish(Bitmap foto1) {
                 imagen1.setImageBitmap(foto1);
-
-                System.out.println("CARGO LA 1 IMAGEN");
-
             }
         }.execute();
 
@@ -119,14 +111,11 @@ public class ParejasActivity extends AppCompatActivity {
             protected Bitmap work() throws Exception {
                 foto2 = php.downloadImage(pareja.getImagen2());
                 return foto2;
-
             }
 
             @Override
             protected void onFinish(Bitmap foto2) {
                 imagen2.setImageBitmap(foto2);
-                System.out.println("CARGO LA 2 IMAGEN");
-
             }
         }.execute();
 
@@ -135,14 +124,11 @@ public class ParejasActivity extends AppCompatActivity {
             protected Bitmap work() throws Exception {
                 foto3 = php.downloadImage(pareja.getImagen3());
                 return foto3;
-
             }
 
             @Override
             protected void onFinish(Bitmap foto3) {
                 imagen3.setImageBitmap(foto3);
-                System.out.println("CARGO LA 3 IMAGEN");
-
             }
         }.execute();
         new ProgressTask<Bitmap>(this) {
@@ -150,14 +136,11 @@ public class ParejasActivity extends AppCompatActivity {
             protected Bitmap work() throws Exception {
                 foto4 = php.downloadImage(pareja.getImagen4());
                 return foto4;
-
             }
 
             @Override
             protected void onFinish(Bitmap foto4) {
                 imagen4.setImageBitmap(foto4);
-                System.out.println("CARGO LA 4 IMAGEN");
-
             }
         }.execute();
 
@@ -166,14 +149,11 @@ public class ParejasActivity extends AppCompatActivity {
             protected Bitmap work() throws Exception {
                 foto5 = php.downloadImage(pareja.getImagen5());
                 return foto5;
-
             }
 
             @Override
             protected void onFinish(Bitmap foto5) {
                 imagen5.setImageBitmap(foto5);
-                System.out.println("CARGO LA 5 IMAGEN");
-
             }
         }.execute();
         new ProgressTask<Bitmap>(this) {
@@ -181,14 +161,11 @@ public class ParejasActivity extends AppCompatActivity {
             protected Bitmap work() throws Exception {
                 foto6 = php.downloadImage(pareja.getImagen6());
                 return foto6;
-
             }
 
             @Override
             protected void onFinish(Bitmap foto6) {
                 imagen6.setImageBitmap(foto6);
-                System.out.println("CARGO LA 6 IMAGEN");
-
             }
         }.execute();
 

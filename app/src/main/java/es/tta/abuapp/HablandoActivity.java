@@ -10,10 +10,6 @@ import es.tta.abuapp.model.BusinessAudios;
 
 
 public class HablandoActivity extends AppCompatActivity {
-    private String URL = "http://vps213926.ovh.net/AbuApp";
-    private Client php=new Client(URL);
-    private BusinessAudios server=new BusinessAudios(php);
-    private Audios audios;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
