@@ -8,34 +8,27 @@ import android.view.View;
 import android.widget.MediaController;
 import java.io.IOException;
 
-public class AudioPlayer implements MediaController.MediaPlayerControl, MediaPlayer.OnPreparedListener
-{
+public class AudioPlayer implements MediaController.MediaPlayerControl, MediaPlayer.OnPreparedListener {
     private View view;
     private MediaPlayer player;
     private MediaController controller;
 
-    public AudioPlayer(View view)
-    {
+    public AudioPlayer(View view) {
         this.view = view;
         player = new MediaPlayer();
         player.setOnPreparedListener(this);
-        controller = new MediaController(view.getContext())
-        {
+        controller = new MediaController(view.getContext()) {
 
             @Override
-            public boolean dispatchKeyEvent(KeyEvent event)
-            {
+            public boolean dispatchKeyEvent(KeyEvent event) {
                 if(event.getKeyCode()==KeyEvent.KEYCODE_BACK)
-                {
                     release();
-                }
                 return super.dispatchKeyEvent(event);
             }
         };
     }
 
-    public void setAudioUri(Uri uri) throws IOException
-    {
+    public void setAudioUri(Uri uri) throws IOException {
         player.setAudioStreamType(AudioManager.STREAM_MUSIC);
         player.setDataSource(view.getContext(), uri);
         player.prepare();
@@ -43,8 +36,7 @@ public class AudioPlayer implements MediaController.MediaPlayerControl, MediaPla
     }
 
     @Override
-    public void onPrepared(MediaPlayer mp)
-    {
+    public void onPrepared(MediaPlayer mp) {
         controller.setMediaPlayer(this);
         controller.setAnchorView(view);
         controller.show(0);
@@ -62,10 +54,8 @@ public class AudioPlayer implements MediaController.MediaPlayerControl, MediaPla
         player.pause();
     }
 
-    public void release()
-    {
-        if(player!=null)
-        {
+    public void release() {
+        if(player!=null) {
             player.stop();
             player.release();
             player = null;

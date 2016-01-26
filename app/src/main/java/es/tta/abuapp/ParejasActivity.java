@@ -1,16 +1,17 @@
 package es.tta.abuapp;
 
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.util.HashMap;
 import java.util.Map;
-
 import es.tta.abuapp.model.BusinessParejas;
 import es.tta.abuapp.model.Parejas;
 
@@ -18,7 +19,9 @@ public class ParejasActivity extends ModelActivity {
 
     private int palabra=0;
     private int imagen=0;
+
     private BusinessParejas server=new BusinessParejas(php);
+
     private Bitmap foto1;
 
     private Parejas pareja;
@@ -36,6 +39,7 @@ public class ParejasActivity extends ModelActivity {
     private TextView palabra4;
     private TextView palabra5;
     private TextView palabra6;
+
     private int pagina=1;
 
     Map<Integer, String> comprobacion = new HashMap<Integer, String>();
@@ -45,6 +49,7 @@ public class ParejasActivity extends ModelActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parejas);
 
+        server.setParejas_correctas(0);
         palabra1= (TextView)findViewById(R.id.palabra_parejas1);
         palabra2= (TextView)findViewById(R.id.palabra_parejas2);
         palabra3= (TextView)findViewById(R.id.palabra_parejas3);
@@ -65,6 +70,7 @@ public class ParejasActivity extends ModelActivity {
     public void guardarPareja(View view){
         int pulsado=view.getId();
 
+        //si se ha pulsado la imagen se guarda en la variable imagen y si es un texto se guarda en palabra
         if(pulsado>=R.id.foto_parejas1&&pulsado<=R.id.foto_parejas6) {
             imagen = pulsado;
         }
@@ -73,30 +79,54 @@ public class ParejasActivity extends ModelActivity {
             palabra = pulsado;
         }
 
+        //si se han pulsado las dos se llama a comprueba
         if(imagen!=0&&palabra!=0)
             comprueba();
-
-
     }
 
     private void comprueba(){
-
         TextView comp=(TextView)findViewById(palabra);
+        ImageView im=(ImageView)findViewById(imagen);
         String pareja=comprobacion.get(imagen);
+
+        //para comprobar se llama al modelo
         boolean correcto=server.comprueba(pareja,comp.getText().toString());
-        if (correcto)
-            Toast.makeText(getApplicationContext(),"Correcto",Toast.LENGTH_SHORT).show();
+
+        if (correcto) {
+
+            comp.setVisibility(View.INVISIBLE);
+            im.setVisibility(View.INVISIBLE);
+            Toast.makeText(getApplicationContext(), "Correcto", Toast.LENGTH_SHORT).show();
+            if(server.getParejas_correctas()==server.getMax_parejas()){
+                Button boton_siguiente=(Button)findViewById(R.id.siguiente_parejas);
+                boton_siguiente.setVisibility(View.VISIBLE);
+                server.setParejas_correctas(0);
+            }
+        }
         else
             Toast.makeText(getApplicationContext(),"Incorrecto",Toast.LENGTH_SHORT).show();
+
         imagen=0;
         palabra=0;
     }
 
-
     public void siguiente_parejas(View view){
         pagina++;
-        cargaJuego();
 
+        Button boton_siguiente=(Button)findViewById(R.id.siguiente_parejas);
+        boton_siguiente.setVisibility(View.GONE);
+
+        if(pagina<=server.getMAX_PAG())
+            cargaJuego();
+        else{
+            LinearLayout layout=(LinearLayout)findViewById(R.id.layout_parejas);
+            layout.removeAllViews();
+            TextView final_parejas=new TextView(this);
+            final_parejas.setText("AMAIERA");
+            final_parejas.setGravity(Gravity.CENTER);
+            final_parejas.setTextSize(70);
+            layout.addView(final_parejas);
+        }
     }
 
     public void cargaJuego(){
@@ -109,12 +139,33 @@ public class ParejasActivity extends ModelActivity {
 
             @Override
             protected void onFinish(Parejas pareja) {
+                imagen1.setVisibility(View.VISIBLE);
+                imagen2.setVisibility(View.VISIBLE);
+                imagen3.setVisibility(View.VISIBLE);
+                imagen4.setVisibility(View.VISIBLE);
+                imagen5.setVisibility(View.VISIBLE);
+                imagen6.setVisibility(View.VISIBLE);
+
+                palabra1.setVisibility(View.VISIBLE);
+                palabra2.setVisibility(View.VISIBLE);
+                palabra3.setVisibility(View.VISIBLE);
+                palabra4.setVisibility(View.VISIBLE);
+                palabra5.setVisibility(View.VISIBLE);
+                palabra6.setVisibility(View.VISIBLE);
+
                 palabra1.setText(pareja.getPalabra1());
                 palabra2.setText(pareja.getPalabra2());
                 palabra3.setText(pareja.getPalabra3());
                 palabra4.setText(pareja.getPalabra4());
                 palabra5.setText(pareja.getPalabra5());
                 palabra6.setText(pareja.getPalabra6());
+
+                comprobacion.put(R.id.foto_parejas1, pareja.getComp1());
+                comprobacion.put(R.id.foto_parejas2, pareja.getComp2());
+                comprobacion.put(R.id.foto_parejas3, pareja.getComp3());
+                comprobacion.put(R.id.foto_parejas4, pareja.getComp4());
+                comprobacion.put(R.id.foto_parejas5, pareja.getComp5());
+                comprobacion.put(R.id.foto_parejas6, pareja.getComp6());
             }
         }.execute();
 
@@ -156,6 +207,7 @@ public class ParejasActivity extends ModelActivity {
                 imagen3.setImageBitmap(foto1);
             }
         }.execute();
+
         new ProgressTask<Bitmap>(this) {
             @Override
             protected Bitmap work() throws Exception {
@@ -181,6 +233,7 @@ public class ParejasActivity extends ModelActivity {
                 imagen5.setImageBitmap(foto1);
             }
         }.execute();
+
         new ProgressTask<Bitmap>(this) {
             @Override
             protected Bitmap work() throws Exception {
@@ -193,13 +246,6 @@ public class ParejasActivity extends ModelActivity {
                 imagen6.setImageBitmap(foto1);
             }
         }.execute();
-
-        comprobacion.put(R.id.foto_parejas1, pareja.getComp1());
-        comprobacion.put(R.id.foto_parejas2, pareja.getComp2());
-        comprobacion.put(R.id.foto_parejas3, pareja.getComp3());
-        comprobacion.put(R.id.foto_parejas4, pareja.getComp4());
-        comprobacion.put(R.id.foto_parejas5, pareja.getComp5());
-        comprobacion.put(R.id.foto_parejas6, pareja.getComp6());
     }
 
 }

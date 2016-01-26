@@ -2,18 +2,19 @@ package es.tta.abuapp.model;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.IOException;
-
 import es.tta.abuapp.Client;
 
-/**
- * Created by maitane on 25/01/16.
- */
 public class BusinessAudios {
 
     private Client php;
     private Audios audios = new Audios();
+
+    public int getMAX_PAG() {
+        return MAX_PAG;
+    }
+
+    private final int MAX_PAG=29;
 
     public BusinessAudios(Client php) {
         this.php = php;

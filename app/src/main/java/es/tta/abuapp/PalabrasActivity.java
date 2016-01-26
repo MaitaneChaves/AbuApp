@@ -8,6 +8,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Layout;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -27,6 +29,7 @@ public class PalabrasActivity extends ModelActivity {
 
     static final int AUDIO_REQUEST_CODE = 1;
 
+
     AudioPlayer ap;
 
     @Override
@@ -35,27 +38,31 @@ public class PalabrasActivity extends ModelActivity {
         setContentView(R.layout.activity_palabras);
 
         texto_palabras=(TextView)findViewById(R.id.texto_palabras);
-        new ProgressTask<Audios>(this) {
-            @Override
-            protected Audios work() throws Exception {
-                audio = server.getAudios(1);
-                return audio;
-
-            }
-            @Override
-            protected void onFinish(Audios audio) {
-                texto_palabras.setText(audio.getTitulo());
-
-            }
-        }.execute();
+        cargaPalabras();
     }
 
     public void siguiente(View view){
+        pagina++;
+        if(pagina<=server.getMAX_PAG())
+            cargaPalabras();
+        else{
+            LinearLayout layout=(LinearLayout)findViewById(R.id.layout_audio);
+            layout.removeAllViews();
+            System.out.println("FINAL");
+            TextView final_palabras=new TextView(this);
+            final_palabras.setText("AMAIERA");
+            final_palabras.setGravity(Gravity.CENTER);
+            final_palabras.setTextSize(70);
+            layout.addView(final_palabras);
+        }
+
+    }
+
+    public void cargaPalabras(){
         LinearLayout audio_view=(LinearLayout)findViewById(R.id.audio);
         if(ap!=null)
             ap.removeController();
-        audio_view.setVisibility(View.GONE);
-        pagina++;
+        //audio_view.setVisibility(View.GONE);
         texto_palabras=(TextView)findViewById(R.id.texto_palabras);
         new ProgressTask<Audios>(this) {
             @Override

@@ -1,7 +1,5 @@
 package es.tta.abuapp.model;
 
-import java.util.HashMap;
-
 public class Parejas {
     private String palabra1;
     private String palabra2;
@@ -23,16 +21,6 @@ public class Parejas {
     private String comp4;
     private String comp5;
     private String comp6;
-
-    private int next_pareja;
-
-    public int getNext_pareja() {
-        return next_pareja;
-    }
-
-    public void setNext_pareja(int next_pareja) {
-        this.next_pareja = next_pareja;
-    }
 
     public String getPalabra1() {
         return palabra1;

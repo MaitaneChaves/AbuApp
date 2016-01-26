@@ -1,23 +1,38 @@
 package es.tta.abuapp.model;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.IOException;
-import java.io.InputStream;
-
 import es.tta.abuapp.Client;
 
 public class BusinessParejas {
 
     private Client php;
     private Parejas pareja=new Parejas();
+    private final int MAX_PAG=5;
+
+
+
+    private final int max_parejas=6;
+    private int parejas_correctas;
+
+    public int getParejas_correctas() {
+        return parejas_correctas;
+    }
+
+    public void setParejas_correctas(int parejas_correctas) {
+        this.parejas_correctas = parejas_correctas;
+    }
+
+    public int getMax_parejas() {
+        return max_parejas;
+    }
 
     public BusinessParejas(Client php){this.php=php;}
 
+    public int getMAX_PAG() {
+        return MAX_PAG;
+    }
 
     public Parejas getParejas (int indice) throws IOException, JSONException {
         JSONObject json = php.getJson(String.format("parejas.php?indice=%d", indice));
@@ -41,16 +56,17 @@ public class BusinessParejas {
         pareja.setComp4(json.getString("c4"));
         pareja.setComp5(json.getString("c5"));
         pareja.setComp6(json.getString("c6"));
+
         return pareja;
     }
 
     public boolean comprueba(String palabra, String comprobacion){
-
-        if (palabra.contentEquals(comprobacion))
+        if (palabra.contentEquals(comprobacion)) {
+            parejas_correctas++;
             return true;
+        }
         else
             return false;
-
     }
 
 }

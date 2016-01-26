@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-
 public class JuegosActivity extends AppCompatActivity {
 
     @Override
@@ -20,7 +19,7 @@ public class JuegosActivity extends AppCompatActivity {
     }
 
     public void huecos(View view) {
-        Intent intent = new Intent(this,HuecosActivity.class);
+        Intent intent = new Intent(this, HuecosActivity.class);
         startActivity(intent);
     }
 }

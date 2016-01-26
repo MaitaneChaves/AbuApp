@@ -5,7 +5,6 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
-
 public abstract class ProgressTask<T> extends AsyncTask<Void, Void, T> {
 
     protected final Context context;
@@ -23,7 +22,6 @@ public abstract class ProgressTask<T> extends AsyncTask<Void, Void, T> {
         dialog.show();
     }
 
-
     @Override
     protected T doInBackground(Void... params) {
         T result =null;
@@ -32,7 +30,6 @@ public abstract class ProgressTask<T> extends AsyncTask<Void, Void, T> {
         }catch (Exception e){
             this.e=e;
         }
-
         return result;
     }
 

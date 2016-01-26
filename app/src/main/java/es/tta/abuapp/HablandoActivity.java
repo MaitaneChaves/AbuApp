@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-
 public class HablandoActivity extends AppCompatActivity {
 
     @Override
@@ -17,7 +16,6 @@ public class HablandoActivity extends AppCompatActivity {
     public void palabras(View view) {
         Intent intent = new Intent(getApplicationContext(),PalabrasActivity.class);
         startActivity(intent);
-
     }
 
     public void canciones(View view) {

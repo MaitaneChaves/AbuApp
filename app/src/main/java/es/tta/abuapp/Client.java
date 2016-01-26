@@ -4,17 +4,13 @@ import android.annotation.TargetApi;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Build;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-
-
 
 public class Client {
 
@@ -27,7 +23,6 @@ public class Client {
         HttpURLConnection conn=(HttpURLConnection)url.openConnection();
         return conn;
     }
-
 
     @TargetApi(Build.VERSION_CODES.KITKAT)
     public String getString(String path) throws IOException{
@@ -51,8 +46,7 @@ public class Client {
         return json;
     }
 
-    public  Bitmap downloadImage(String imagen)
-    {
+    public  Bitmap downloadImage(String imagen) {
         Bitmap loadedImage=null;
         try {
             HttpURLConnection conn = getConnection(imagen);
