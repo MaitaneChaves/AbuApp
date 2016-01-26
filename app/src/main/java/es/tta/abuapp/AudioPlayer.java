@@ -117,6 +117,8 @@ public class AudioPlayer implements MediaController.MediaPlayerControl, MediaPla
         return player.getAudioSessionId();
     }
 
-
+    public void removeController(){
+        controller.hide();
+    }
 }
 

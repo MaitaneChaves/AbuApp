@@ -44,9 +44,13 @@ public class BusinessParejas {
         return pareja;
     }
 
-
     public boolean comprueba(String palabra, String comprobacion){
-        return true;
+
+        if (palabra.contentEquals(comprobacion))
+            return true;
+        else
+            return false;
+
     }
 
 }

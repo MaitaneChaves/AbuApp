@@ -7,9 +7,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -18,9 +16,7 @@ import android.widget.Toast;
 import es.tta.abuapp.model.Audios;
 import es.tta.abuapp.model.BusinessAudios;
 
-public class PalabrasActivity extends AppCompatActivity {
-    public static final String URL = "http://vps213926.ovh.net/AbuApp";
-    private Client php= new Client(URL);;
+public class PalabrasActivity extends ModelActivity {
     private BusinessAudios server=new BusinessAudios(php);
 
     private Audios audio;
@@ -49,18 +45,16 @@ public class PalabrasActivity extends AppCompatActivity {
             @Override
             protected void onFinish(Audios audio) {
                 texto_palabras.setText(audio.getTitulo());
-                //playAudio(Uri.parse(URL+"/"+audio.getAudio()));
+
             }
         }.execute();
     }
 
     public void siguiente(View view){
-        System.out.print("EL PORCENTAJE ES "+ap.getBufferPercentage());
         LinearLayout audio_view=(LinearLayout)findViewById(R.id.audio);
         if(ap!=null)
-            ap.release();
+            ap.removeController();
         audio_view.setVisibility(View.GONE);
-        //ap=new AudioPlayer(audio_view);
         pagina++;
         texto_palabras=(TextView)findViewById(R.id.texto_palabras);
         new ProgressTask<Audios>(this) {
@@ -72,13 +66,7 @@ public class PalabrasActivity extends AppCompatActivity {
             }
             @Override
             protected void onFinish(Audios audio) {
-
                 texto_palabras.setText(audio.getTitulo());
-               /* LinearLayout layout_audio = (LinearLayout)findViewById(R.id.layout_audio);
-                LinearLayout audio_view=(LinearLayout)findViewById(R.id.audio);
-                audio_view.setVisibility(View.GONE);
-                layout_audio.removeView(audio_view);*/
-
             }
 
         }.execute();
@@ -100,25 +88,26 @@ public class PalabrasActivity extends AppCompatActivity {
         }
     }
 
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(resultCode!= Activity.RESULT_OK) {
-            Toast.makeText(this, "LLEGO HASTA RESULT", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Error al grabar el audio", Toast.LENGTH_SHORT).show();
             return;
         }
 
         switch(requestCode) {
             case AUDIO_REQUEST_CODE:
+                if(ap!=null)
+                    ap.removeController();
                 playAudio(data.getData());
                 break;
         }
     }
 
     public void playAudio(Uri uri) {
-
-        LinearLayout layout_audio = (LinearLayout)findViewById(R.id.layout_audio);
         LinearLayout audio=(LinearLayout)findViewById(R.id.audio);
+        if(ap!=null)
+            ap.removeController();
          ap = new AudioPlayer(audio);
         try {
             Cursor cursor = getContentResolver().query(uri, null, null, null, null);
@@ -127,7 +116,6 @@ public class PalabrasActivity extends AppCompatActivity {
             String pathAudio = cursor.getString(index);
             Uri uri_final = Uri.parse(pathAudio);
             ap.setAudioUri(uri_final);
-
         }
         catch(Exception e) {
 
@@ -135,16 +123,13 @@ public class PalabrasActivity extends AppCompatActivity {
     }
 
     public void playAudio(View view) {
-
-        LinearLayout layout_audio = (LinearLayout)findViewById(R.id.layout_audio);
         LinearLayout audio_view=(LinearLayout)findViewById(R.id.audio);
+        if(ap!=null)
+            ap.removeController();
         ap = new AudioPlayer(audio_view);
-        //if(audio_view!=null)
-             //layout_audio.removeViewInLayout(audio_view);
-         //ap = new AudioPlayer(layout_audio);
+
         try {
             ap.setAudioUri(Uri.parse(URL + "/" + audio.getAudio()));
-
         }
         catch(Exception e) {
 

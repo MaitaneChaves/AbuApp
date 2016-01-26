@@ -18,17 +18,13 @@ import java.net.URL;
 
 public class Client {
 
-    private  String baseURL;
-    //private final Map<String,String> properties=new HashMap<>();
+    public String baseURL;
 
     public Client(String baseURL){this.baseURL=baseURL;}
+    
     private HttpURLConnection getConnection(String path) throws IOException {
         URL url=new URL(String.format("%s/%s",baseURL,path));
         HttpURLConnection conn=(HttpURLConnection)url.openConnection();
-        /*for(Map.Entry<String,String> property : properties.entrySet())
-            conn.setRequestProperty(property.getKey(), property.getValue());
-        conn.setUseCaches(false);*/
-
         return conn;
     }
 
@@ -54,7 +50,6 @@ public class Client {
         System.out.println(json);
         return json;
     }
-
 
     public  Bitmap downloadImage(String imagen)
     {
