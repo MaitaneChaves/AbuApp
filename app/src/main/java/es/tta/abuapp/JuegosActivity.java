@@ -3,18 +3,17 @@ package es.tta.abuapp;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 
-import es.tta.abuapp.ProgressTask;
 import es.tta.abuapp.model.BusinessParejas;
 import es.tta.abuapp.model.BusinessHuecos;
 import es.tta.abuapp.model.Huecos;
 import es.tta.abuapp.model.Parejas;
-import es.tta.abuapp.presentation.DataParejas;
 import es.tta.abuapp.presentation.DataHuecos;
 
-public class JuegosActivity extends ModelActivity {
+public class JuegosActivity extends AppCompatActivity {
 
     private Parejas pareja;
     private Huecos hueco;
@@ -30,7 +29,6 @@ public class JuegosActivity extends ModelActivity {
 
     //PAREJAS//
     private BusinessParejas serverParejas;
-    private DataParejas dataParejas;
 
 
     @Override
@@ -43,12 +41,12 @@ public class JuegosActivity extends ModelActivity {
         server = new BusinessHuecos(php);
         data = new DataHuecos(getIntent().getExtras());
         serverParejas=new BusinessParejas(php);
-        dataParejas=new DataParejas(getIntent().getExtras());
+
     }
 
     public void parejas(View view)
     {
-        new ProgressTask<Parejas>(this) {
+        /*new ProgressTask<Parejas>(this) {
             @Override
             protected Parejas work() throws Exception {
                 pareja = serverParejas.getParejas(1);
@@ -58,18 +56,17 @@ public class JuegosActivity extends ModelActivity {
 
             @Override
             protected void onFinish(Parejas pareja) {
-                //data.putStatus(s);
-                dataParejas.putParejas(pareja);
+                //dataParejas.putParejas(pareja);
                 Intent intent=new Intent(getApplicationContext(), ParejasActivity.class);
-                intent.putExtras(dataParejas.getBundle());
-                System.out.println("LLAMO A START ACTIVITY");
+                //intent.putExtras(dataParejas.getBundle());
+                //System.out.println("LLAMO A START ACTIVITY");
                 startActivity(intent);
 
             }
-        }.execute();
+        }.execute();*/
 
-
-
+        Intent intent=new Intent(getApplicationContext(), ParejasActivity.class);
+        startActivity(intent);
     }
 
     public void huecos(View view)

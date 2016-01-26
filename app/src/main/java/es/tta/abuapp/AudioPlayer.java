@@ -21,9 +21,6 @@ public class AudioPlayer implements MediaController.MediaPlayerControl, MediaPla
         player.setOnPreparedListener(this);
         controller = new MediaController(view.getContext())
         {
-            /*@Override
-            public void hide()
-            {}*/
 
             @Override
             public boolean dispatchKeyEvent(KeyEvent event)

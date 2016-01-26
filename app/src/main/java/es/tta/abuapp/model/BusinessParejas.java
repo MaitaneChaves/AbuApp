@@ -22,7 +22,6 @@ public class BusinessParejas {
     public Parejas getParejas (int indice) throws IOException, JSONException {
         JSONObject json = php.getJson(String.format("parejas.php?indice=%d", indice));
         pareja.setImagen1(json.getString("i1"));
-        //System.out.println("Del JSON obtengo: "+json.getString("i1"));
         pareja.setImagen2(json.getString("i2"));
         pareja.setImagen3(json.getString("i3"));
         pareja.setImagen4(json.getString("i4"));
@@ -46,5 +45,8 @@ public class BusinessParejas {
     }
 
 
+    public boolean comprueba(String palabra, String comprobacion){
+        return true;
+    }
 
 }

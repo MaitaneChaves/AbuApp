@@ -8,48 +8,48 @@
 
     <GridLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:columnCount="2"
         android:rowCount="6">
 
         <ImageView android:id="@+id/foto_parejas1"
             android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_height="100dp"
 
             android:gravity="center"
             android:onClick="guardarPareja"/>
 
         <ImageView android:id="@+id/foto_parejas2"
             android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_height="100dp"
 
             android:gravity="center"
             android:onClick="guardarPareja"/>
 
         <ImageView android:id="@+id/foto_parejas3"
             android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_height="100dp"
 
             android:gravity="center"
             android:onClick="guardarPareja"/>
 
         <ImageView android:id="@+id/foto_parejas4"
             android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_height="100dp"
 
             android:gravity="center"
             android:onClick="guardarPareja"/>
 
         <ImageView android:id="@+id/foto_parejas5"
             android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_height="100dp"
 
             android:gravity="center"
             android:onClick="guardarPareja"/>
 
         <ImageView android:id="@+id/foto_parejas6"
             android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_height="100dp"
 
             android:gravity="center"
             android:onClick="guardarPareja"/>
@@ -102,13 +102,16 @@
             android:textSize="20dp"
             android:gravity="center"
             android:onClick="guardarPareja" />
-
+    </GridLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
         <Button android:id="@+id/siguiente_parejas"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Hurrengoa"
+            android:visibility="visible"
             android:onClick="siguiente_parejas"/>
-
-    </GridLayout>
+    </RelativeLayout>
 
 </LinearLayout>

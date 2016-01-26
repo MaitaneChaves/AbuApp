@@ -2,20 +2,17 @@ package es.tta.abuapp;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import es.tta.abuapp.model.Audios;
 import es.tta.abuapp.model.BusinessAudios;
-import es.tta.abuapp.presentation.DataAudios;
 
 
 public class HablandoActivity extends AppCompatActivity {
     private String URL = "http://vps213926.ovh.net/AbuApp";
     private Client php=new Client(URL);
     private BusinessAudios server=new BusinessAudios(php);
-    private DataAudios data;
     private Audios audios;
 
     @Override
@@ -25,25 +22,8 @@ public class HablandoActivity extends AppCompatActivity {
     }
 
     public void palabras(View view) {
-        new ProgressTask<Audios>(this) {
-            @Override
-            protected Audios work() throws Exception {
-                audios = server.getAudios(1);
-                return audios;
-
-            }
-
-            @Override
-            protected void onFinish(Audios pareja) {
-
-                data.putAudios(audios);
-                Intent intent = new Intent(getApplicationContext(),PalabrasActivity.class);
-                intent.putExtras(data.getBundle());
-                startActivity(intent);;
-
-            }
-        }.execute();
-
+        Intent intent = new Intent(getApplicationContext(),PalabrasActivity.class);
+        startActivity(intent);
     }
 
     public void canciones(View view) {
