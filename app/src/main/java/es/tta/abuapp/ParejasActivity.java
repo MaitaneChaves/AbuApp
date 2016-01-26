@@ -98,9 +98,8 @@ public class ParejasActivity extends ModelActivity {
             im.setVisibility(View.INVISIBLE);
             Toast.makeText(getApplicationContext(), "Correcto", Toast.LENGTH_SHORT).show();
             if(server.getParejas_correctas()==server.getMax_parejas()){
-                Button boton_siguiente=(Button)findViewById(R.id.siguiente_parejas);
-                boton_siguiente.setVisibility(View.VISIBLE);
                 server.setParejas_correctas(0);
+                cargaJuego();
             }
         }
         else
@@ -111,10 +110,8 @@ public class ParejasActivity extends ModelActivity {
     }
 
     public void siguiente_parejas(View view){
-        pagina++;
 
-        Button boton_siguiente=(Button)findViewById(R.id.siguiente_parejas);
-        boton_siguiente.setVisibility(View.GONE);
+
 
         if(pagina<=server.getMAX_PAG())
             cargaJuego();
@@ -130,122 +127,138 @@ public class ParejasActivity extends ModelActivity {
     }
 
     public void cargaJuego(){
-        new ProgressTask<Parejas>(this) {
-            @Override
-            protected Parejas work() throws Exception {
-                pareja = server.getParejas(pagina);
-                return pareja;
-            }
 
-            @Override
-            protected void onFinish(Parejas pareja) {
-                imagen1.setVisibility(View.VISIBLE);
-                imagen2.setVisibility(View.VISIBLE);
-                imagen3.setVisibility(View.VISIBLE);
-                imagen4.setVisibility(View.VISIBLE);
-                imagen5.setVisibility(View.VISIBLE);
-                imagen6.setVisibility(View.VISIBLE);
+        if(pagina<=server.getMAX_PAG())
+        {
+            new ProgressTask<Parejas>(this) {
+                @Override
+                protected Parejas work() throws Exception {
+                    pareja = server.getParejas(pagina);
+                    pagina++;
+                    return pareja;
+                }
 
-                palabra1.setVisibility(View.VISIBLE);
-                palabra2.setVisibility(View.VISIBLE);
-                palabra3.setVisibility(View.VISIBLE);
-                palabra4.setVisibility(View.VISIBLE);
-                palabra5.setVisibility(View.VISIBLE);
-                palabra6.setVisibility(View.VISIBLE);
+                @Override
+                protected void onFinish(Parejas pareja) {
+                    imagen1.setVisibility(View.VISIBLE);
+                    imagen2.setVisibility(View.VISIBLE);
+                    imagen3.setVisibility(View.VISIBLE);
+                    imagen4.setVisibility(View.VISIBLE);
+                    imagen5.setVisibility(View.VISIBLE);
+                    imagen6.setVisibility(View.VISIBLE);
 
-                palabra1.setText(pareja.getPalabra1());
-                palabra2.setText(pareja.getPalabra2());
-                palabra3.setText(pareja.getPalabra3());
-                palabra4.setText(pareja.getPalabra4());
-                palabra5.setText(pareja.getPalabra5());
-                palabra6.setText(pareja.getPalabra6());
+                    palabra1.setVisibility(View.VISIBLE);
+                    palabra2.setVisibility(View.VISIBLE);
+                    palabra3.setVisibility(View.VISIBLE);
+                    palabra4.setVisibility(View.VISIBLE);
+                    palabra5.setVisibility(View.VISIBLE);
+                    palabra6.setVisibility(View.VISIBLE);
 
-                comprobacion.put(R.id.foto_parejas1, pareja.getComp1());
-                comprobacion.put(R.id.foto_parejas2, pareja.getComp2());
-                comprobacion.put(R.id.foto_parejas3, pareja.getComp3());
-                comprobacion.put(R.id.foto_parejas4, pareja.getComp4());
-                comprobacion.put(R.id.foto_parejas5, pareja.getComp5());
-                comprobacion.put(R.id.foto_parejas6, pareja.getComp6());
-            }
-        }.execute();
+                    palabra1.setText(pareja.getPalabra1());
+                    palabra2.setText(pareja.getPalabra2());
+                    palabra3.setText(pareja.getPalabra3());
+                    palabra4.setText(pareja.getPalabra4());
+                    palabra5.setText(pareja.getPalabra5());
+                    palabra6.setText(pareja.getPalabra6());
 
-        new ProgressTask<Bitmap>(this) {
-            @Override
-            protected Bitmap work() throws Exception {
-                foto1 = php.downloadImage(pareja.getImagen1());
-                return foto1;
-            }
+                    comprobacion.put(R.id.foto_parejas1, pareja.getComp1());
+                    comprobacion.put(R.id.foto_parejas2, pareja.getComp2());
+                    comprobacion.put(R.id.foto_parejas3, pareja.getComp3());
+                    comprobacion.put(R.id.foto_parejas4, pareja.getComp4());
+                    comprobacion.put(R.id.foto_parejas5, pareja.getComp5());
+                    comprobacion.put(R.id.foto_parejas6, pareja.getComp6());
+                }
+            }.execute();
 
-            @Override
-            protected void onFinish(Bitmap foto1) {
-                imagen1.setImageBitmap(foto1);
-            }
-        }.execute();
+            new ProgressTask<Bitmap>(this) {
+                @Override
+                protected Bitmap work() throws Exception {
+                    foto1 = php.downloadImage(pareja.getImagen1());
+                    return foto1;
+                }
 
-        new ProgressTask<Bitmap>(this) {
-            @Override
-            protected Bitmap work() throws Exception {
-                foto1 = php.downloadImage(pareja.getImagen2());
-                return foto1;
-            }
+                @Override
+                protected void onFinish(Bitmap foto1) {
+                    imagen1.setImageBitmap(foto1);
+                }
+            }.execute();
 
-            @Override
-            protected void onFinish(Bitmap foto1) {
-                imagen2.setImageBitmap(foto1);
-            }
-        }.execute();
+            new ProgressTask<Bitmap>(this) {
+                @Override
+                protected Bitmap work() throws Exception {
+                    foto1 = php.downloadImage(pareja.getImagen2());
+                    return foto1;
+                }
 
-        new ProgressTask<Bitmap>(this) {
-            @Override
-            protected Bitmap work() throws Exception {
-                foto1 = php.downloadImage(pareja.getImagen3());
-                return foto1;
-            }
+                @Override
+                protected void onFinish(Bitmap foto1) {
+                    imagen2.setImageBitmap(foto1);
+                }
+            }.execute();
 
-            @Override
-            protected void onFinish(Bitmap foto1) {
-                imagen3.setImageBitmap(foto1);
-            }
-        }.execute();
+            new ProgressTask<Bitmap>(this) {
+                @Override
+                protected Bitmap work() throws Exception {
+                    foto1 = php.downloadImage(pareja.getImagen3());
+                    return foto1;
+                }
 
-        new ProgressTask<Bitmap>(this) {
-            @Override
-            protected Bitmap work() throws Exception {
-                foto1 = php.downloadImage(pareja.getImagen4());
-                return foto1;
-            }
+                @Override
+                protected void onFinish(Bitmap foto1) {
+                    imagen3.setImageBitmap(foto1);
+                }
+            }.execute();
 
-            @Override
-            protected void onFinish(Bitmap foto1) {
-                imagen4.setImageBitmap(foto1);
-            }
-        }.execute();
+            new ProgressTask<Bitmap>(this) {
+                @Override
+                protected Bitmap work() throws Exception {
+                    foto1 = php.downloadImage(pareja.getImagen4());
+                    return foto1;
+                }
 
-        new ProgressTask<Bitmap>(this) {
-            @Override
-            protected Bitmap work() throws Exception {
-                foto1 = php.downloadImage(pareja.getImagen5());
-                return foto1;
-            }
+                @Override
+                protected void onFinish(Bitmap foto1) {
+                    imagen4.setImageBitmap(foto1);
+                }
+            }.execute();
 
-            @Override
-            protected void onFinish(Bitmap foto1) {
-                imagen5.setImageBitmap(foto1);
-            }
-        }.execute();
+            new ProgressTask<Bitmap>(this) {
+                @Override
+                protected Bitmap work() throws Exception {
+                    foto1 = php.downloadImage(pareja.getImagen5());
+                    return foto1;
+                }
 
-        new ProgressTask<Bitmap>(this) {
-            @Override
-            protected Bitmap work() throws Exception {
-                foto1 = php.downloadImage(pareja.getImagen6());
-                return foto1;
-            }
+                @Override
+                protected void onFinish(Bitmap foto1) {
+                    imagen5.setImageBitmap(foto1);
+                }
+            }.execute();
 
-            @Override
-            protected void onFinish(Bitmap foto1) {
-                imagen6.setImageBitmap(foto1);
-            }
-        }.execute();
+            new ProgressTask<Bitmap>(this) {
+                @Override
+                protected Bitmap work() throws Exception {
+                    foto1 = php.downloadImage(pareja.getImagen6());
+                    return foto1;
+                }
+
+                @Override
+                protected void onFinish(Bitmap foto1) {
+                    imagen6.setImageBitmap(foto1);
+                }
+            }.execute();
+        }
+
+        else{
+            LinearLayout layout=(LinearLayout)findViewById(R.id.layout_parejas);
+            layout.removeAllViews();
+            TextView final_parejas=new TextView(this);
+            final_parejas.setText("AMAIERA");
+            final_parejas.setGravity(Gravity.CENTER);
+            final_parejas.setTextSize(70);
+            layout.addView(final_parejas);
+        }
+
     }
 
 }

@@ -5,105 +5,118 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:id="@+id/layout_parejas">
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <Button android:id="@+id/siguiente_parejas"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Hurrengoa"
-            android:visibility="gone"
-            android:onClick="siguiente_parejas"/>
-    </RelativeLayout>
+    android:id="@+id/layout_parejas"
+    android:layout_gravity="center_vertical"
+    android:background="@drawable/fondo"
+    android:foregroundGravity="center"
+    android:textAlignment="center">
 
     <GridLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:columnCount="2"
-        android:rowCount="6">
+        android:rowCount="6"
+        android:alignmentMode="alignMargins"
+        android:textAlignment="inherit"
+        android:foregroundGravity="fill_horizontal"
+        android:layout_gravity="center_vertical">
 
         <ImageView android:id="@+id/foto_parejas1"
-            android:layout_width="150dp"
+            android:layout_width="170dp"
             android:layout_height="100dp"
-            android:gravity="center"
+            android:gravity="center_horizontal"
             android:onClick="guardarPareja"/>
 
         <ImageView android:id="@+id/foto_parejas2"
-            android:layout_width="150dp"
+            android:layout_width="170dp"
             android:layout_height="100dp"
-            android:gravity="center"
+            android:gravity="center_horizontal"
             android:onClick="guardarPareja"/>
 
         <ImageView android:id="@+id/foto_parejas3"
-            android:layout_width="150dp"
+            android:layout_width="170dp"
             android:layout_height="100dp"
-            android:gravity="center"
+            android:gravity="center_horizontal"
             android:onClick="guardarPareja"/>
 
         <ImageView android:id="@+id/foto_parejas4"
-            android:layout_width="150dp"
+            android:layout_width="170dp"
             android:layout_height="100dp"
-            android:gravity="center"
+            android:gravity="center_horizontal"
             android:onClick="guardarPareja"/>
 
         <ImageView android:id="@+id/foto_parejas5"
-            android:layout_width="150dp"
+            android:layout_width="170dp"
             android:layout_height="100dp"
-            android:gravity="center"
+            android:gravity="center_horizontal"
             android:onClick="guardarPareja"/>
 
         <ImageView android:id="@+id/foto_parejas6"
-            android:layout_width="150dp"
+            android:layout_width="170dp"
             android:layout_height="100dp"
-            android:gravity="center"
+            android:gravity="center_horizontal"
             android:onClick="guardarPareja"/>
 
 
         <TextView android:id="@+id/palabra_parejas1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20dp"
+            android:layout_height="80dp"
+            android:textSize="35dp"
+            android:textAlignment="center"
+            android:layout_gravity="center"
             android:gravity="center"
+            android:textColor="@color/blanco"
             android:onClick="guardarPareja" />
 
         <TextView android:id="@+id/palabra_parejas2"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20dp"
+            android:layout_height="80dp"
+            android:textSize="35dp"
+            android:layout_gravity="center"
+            android:textAlignment="center"
             android:gravity="center"
+            android:textColor="@color/blanco"
             android:onClick="guardarPareja" />
 
         <TextView android:id="@+id/palabra_parejas3"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20dp"
+            android:layout_height="80dp"
+            android:textSize="35dp"
+            android:layout_gravity="center"
+            android:textAlignment="center"
             android:gravity="center"
+            android:textColor="@color/blanco"
             android:onClick="guardarPareja" />
 
         <TextView android:id="@+id/palabra_parejas4"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:textSize="35dp"
+            android:textAlignment="center"
             android:gravity="center"
+            android:textColor="@color/blanco"
             android:onClick="guardarPareja" />
 
         <TextView android:id="@+id/palabra_parejas5"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20dp"
+            android:layout_height="80dp"
+            android:textSize="35dp"
+            android:layout_gravity="center"
+            android:textAlignment="center"
             android:gravity="center"
+            android:textColor="@color/blanco"
             android:onClick="guardarPareja" />
 
         <TextView android:id="@+id/palabra_parejas6"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20dp"
+            android:layout_height="80dp"
+            android:textSize="35dp"
+            android:layout_gravity="center"
+            android:textAlignment="center"
             android:gravity="center"
+            android:textColor="@color/blanco"
             android:onClick="guardarPareja" />
     </GridLayout>
-
-
 
 </LinearLayout>
