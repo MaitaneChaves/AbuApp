@@ -1,8 +1,12 @@
 package es.tta.abuapp;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Size;
+import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -42,7 +46,7 @@ public class FrasesDiaADiaActivity extends AppCompatActivity {
         Intent intent = getIntent();
         tipo = intent.getStringExtra(DiaADiaActivity.EXTRA_TIPO);
         tituloView = (TextView)findViewById(R.id.titulo_diaadia);
-        tituloView.setText(tipo);
+        tituloView.setText(tipo.substring(0,1).toUpperCase() + tipo.substring(1));
         layout = (LinearLayout)findViewById(R.id.frases_layout);
 
         php = new Client(URL);
@@ -79,6 +83,9 @@ public class FrasesDiaADiaActivity extends AppCompatActivity {
                 String[] frase = fraseConNumero.split("--");
                 f.setText(frase[0] + "\n");
                 f.setId(Integer.valueOf(frase[1]));
+                f.setTextColor(Color.WHITE);
+                f.setGravity(Gravity.CENTER);
+                f.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
                 layout.addView(f);
 
                 f.setOnClickListener(new View.OnClickListener() {

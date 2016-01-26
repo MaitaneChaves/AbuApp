@@ -4,30 +4,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/fondo">
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Juegos"
-        android:onClick="juegos"/>
+        android:onClick="juegos"
+        android:textColor="@color/blanco"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Dia a dia"
-        android:onClick="diaadia"/>
+        android:onClick="diaadia"
+        android:textColor="@color/blanco"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Hablando"
-        android:onClick="hablando"/>
+        android:onClick="hablando"
+        android:textColor="@color/blanco"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Traductor"
-        android:onClick="traductor"/>
+        android:onClick="traductor"
+        android:textColor="@color/blanco"/>
 
 </LinearLayout>

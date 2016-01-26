@@ -5,11 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:id="@+id/layout_huecos_entero">
+    android:id="@+id/layout_huecos_entero"
+    android:background="@drawable/fondo">
 
     <ImageView android:id="@+id/foto_huecos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"/>
 
     <TextView android:id="@+id/texto_huecos"
         android:layout_width="match_parent"
@@ -20,18 +22,14 @@
     <EditText android:id="@+id/respuesta_huecos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
+        android:layout_gravity="center"
         android:textSize="20dp"/>
 
     <Button android:id="@+id/boton_huecos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:text="Egiaztatu"
         android:onClick="comprobar"/>
 
-    <Button android:id="@+id/boton_siguiente_hueco"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Hurrengoa"
-        android:onClick="cargarHueco"/>
 </LinearLayout>

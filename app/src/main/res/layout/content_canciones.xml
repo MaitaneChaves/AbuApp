@@ -5,14 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:id="@+id/layout_canciones_entero">
+    android:id="@+id/layout_canciones_entero"
+    android:background="@drawable/fondo">
 
 
     <TextView android:id="@+id/texto_canciones"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:textSize="40dp"/>
+        android:textSize="30dp"
+        android:textColor="@color/blanco"/>
 
     <Button android:id="@+id/boton_play"
         android:layout_width="match_parent"
