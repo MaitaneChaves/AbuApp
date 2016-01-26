@@ -1,22 +1,24 @@
 package es.tta.abuapp.model;
 
-import android.view.View;
-import android.widget.Toast;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.IOException;
-
 import es.tta.abuapp.Client;
 
-/**
- * Created by Naiara on 15/01/2016.
- */
+
 public class BusinessHuecos
 {
     private Client php;
     private Huecos hueco = new Huecos();
+    private int max_huecos = 20; //Valor de bbdd
+    private int max_intentos = 3;
+
+    public int getMax_huecos() {
+        return max_huecos;
+    }
+    public int getMax_intentos() {
+        return max_intentos;
+    }
 
     public BusinessHuecos (Client php){this.php=php;}
 
@@ -33,6 +35,18 @@ public class BusinessHuecos
     public boolean comprobar(String palabra_completa, String respuesta)
     {
         if(respuesta.toLowerCase().compareTo(palabra_completa)==0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public boolean comprobarIntentosRestantes(int intentos_realizados)
+    {
+        if(intentos_realizados<max_intentos)
         {
             return true;
         }

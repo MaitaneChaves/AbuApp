@@ -2,18 +2,19 @@ package es.tta.abuapp.model;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.IOException;
-
 import es.tta.abuapp.Client;
 
-/**
- * Created by Naiara on 23/01/2016.
- */
+
 public class BusinessCanciones
 {
     private Client php;
     private Canciones cancion = new Canciones();
+    private int max_canciones = 12; //Valor de bbdd
+
+    public int getMax_canciones() {
+        return max_canciones;
+    }
 
     public BusinessCanciones (Client php){this.php=php;}
 

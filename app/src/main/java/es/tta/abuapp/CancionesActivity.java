@@ -2,29 +2,25 @@ package es.tta.abuapp;
 
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.MediaController;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.VideoView;
 import es.tta.abuapp.model.BusinessCanciones;
 import es.tta.abuapp.model.Canciones;
 
-public class CancionesActivity extends AppCompatActivity
+public class CancionesActivity extends ModelActivity
 {
-    public static final String URL = "http://vps213926.ovh.net/AbuApp";
-    private Client php= new Client(URL);
     private BusinessCanciones server;
     private Canciones cancion;
-    //private DataCanciones data;
-
     private int num_pag = 1;
     private TextView tituloView;
     private VideoView video;
+    private MediaController controller;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,22 +29,17 @@ public class CancionesActivity extends AppCompatActivity
 
         tituloView = (TextView)findViewById(R.id.texto_canciones);
 
-        php = new Client(URL);
         server = new BusinessCanciones(php);
-        //data = new DataCanciones(getIntent().getExtras());
 
-        //siguienteCancion(View view);
-
-        //CAMBIADO DE SITIO
+        //Creo videoview solo 1 vez
         video = new VideoView(this);
         ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT);
         video.setLayoutParams(params);
-
-        MediaController controller = new MediaController(this)
+        controller = new MediaController(this)
         {
-            @Override
+            /*@Override
             public void hide()
-            {}
+            {}*/
 
             @Override
             public boolean dispatchKeyEvent(KeyEvent event)
@@ -62,10 +53,13 @@ public class CancionesActivity extends AppCompatActivity
         };
         controller.setAnchorView(video);
         video.setMediaController(controller);
+
+        //Cargo la primera cancion
+        siguienteCancion();
     }
 
 
-    public void playVideo(View view, String urlCancion)
+    public void playVideo(String urlCancion)
     {
         LinearLayout layout = (LinearLayout)findViewById(R.id.canciones_layout);
         layout.removeView(video);
@@ -77,27 +71,41 @@ public class CancionesActivity extends AppCompatActivity
         video.start();
     }
 
-
-    public void siguienteCancion(View view)
+    public void cargarCancion(View view)
     {
-        final View v = view;
+        siguienteCancion();
+    }
 
-        new ProgressTask<Canciones>(this)
+    public void siguienteCancion()
+    {
+        if(num_pag<=server.getMax_canciones())
         {
-            @Override
-            protected Canciones work() throws Exception {
-                cancion = server.getCanciones(num_pag);
-                return cancion;
-            }
+            new ProgressTask<Canciones>(this) {
+                @Override
+                protected Canciones work() throws Exception {
+                    cancion = server.getCanciones(num_pag);
+                    return cancion;
+                }
 
-            @Override
-            protected void onFinish(Canciones cancion) {
-                tituloView.setText(cancion.getTitulo());
-                String urlCancion = cancion.getVideo();
-                playVideo(v, urlCancion);
-            }
-        }.execute();
-
-        num_pag++;
+                @Override
+                protected void onFinish(Canciones cancion) {
+                    tituloView.setText(cancion.getTitulo());
+                    String urlCancion = cancion.getVideo();
+                    playVideo(urlCancion);
+                    num_pag++;
+                }
+            }.execute();
+        }
+        else
+        {
+            LinearLayout layoutEntero = (LinearLayout)findViewById(R.id.layout_canciones_entero);
+            layoutEntero.removeAllViews();
+            controller.hide();
+            TextView txNuevo = new TextView(this);
+            txNuevo.setText("AMAIERA");
+            txNuevo.setGravity(Gravity.CENTER);
+            txNuevo.setTextSize(70);
+            layoutEntero.addView(txNuevo);
+        }
     }
 }

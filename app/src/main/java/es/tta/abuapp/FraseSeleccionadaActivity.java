@@ -3,14 +3,12 @@ package es.tta.abuapp;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class FraseSeleccionadaActivity extends AppCompatActivity {
+public class FraseSeleccionadaActivity extends ModelActivity {
 
-    public static final String URL = "http://vps213926.ovh.net/AbuApp";
     private String urlAudio;
 
     @Override
@@ -25,13 +23,9 @@ public class FraseSeleccionadaActivity extends AppCompatActivity {
 
         TextView castellanoView = (TextView)findViewById(R.id.fraseSeleccionada_castellano);
         TextView euskeraView = (TextView)findViewById(R.id.fraseSeleccionada_euskera);
-        TextView audioView = (TextView)findViewById(R.id.fraseSeleccionada_audio);
 
         castellanoView.setText(castellano);
         euskeraView.setText(euskera);
-        audioView.setText(urlAudio);
-
-        //playAudio(audio);
     }
 
 
@@ -47,7 +41,6 @@ public class FraseSeleccionadaActivity extends AppCompatActivity {
         }
         catch(Exception e)
         {
-
         }
     }
 }
