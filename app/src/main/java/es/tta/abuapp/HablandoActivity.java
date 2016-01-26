@@ -21,22 +21,8 @@ public class HablandoActivity extends AppCompatActivity {
     }
 
     public void palabras(View view) {
-        new ProgressTask<Audios>(this) {
-            @Override
-            protected Audios work() throws Exception {
-                audios = server.getAudios(1);
-                return audios;
-
-            }
-
-            @Override
-            protected void onFinish(Audios pareja) {
-
-                Intent intent = new Intent(getApplicationContext(),PalabrasActivity.class);
-                startActivity(intent);;
-
-            }
-        }.execute();
+        Intent intent = new Intent(getApplicationContext(),PalabrasActivity.class);
+        startActivity(intent);
 
     }
 

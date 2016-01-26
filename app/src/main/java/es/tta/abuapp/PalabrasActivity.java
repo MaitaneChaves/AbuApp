@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -16,13 +17,12 @@ import android.widget.Toast;
 
 import es.tta.abuapp.model.Audios;
 import es.tta.abuapp.model.BusinessAudios;
-import es.tta.abuapp.presentation.DataAudios;
 
 public class PalabrasActivity extends AppCompatActivity {
     public static final String URL = "http://vps213926.ovh.net/AbuApp";
     private Client php= new Client(URL);;
     private BusinessAudios server=new BusinessAudios(php);
-    private DataAudios data;
+
     private Audios audio;
 
     private TextView texto_palabras;
@@ -31,24 +31,58 @@ public class PalabrasActivity extends AppCompatActivity {
 
     static final int AUDIO_REQUEST_CODE = 1;
 
+    AudioPlayer ap;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_palabras);
 
-        data=new DataAudios(getIntent().getExtras());
-        audio=data.getAudios();
         texto_palabras=(TextView)findViewById(R.id.texto_palabras);
+        new ProgressTask<Audios>(this) {
+            @Override
+            protected Audios work() throws Exception {
+                audio = server.getAudios(1);
+                return audio;
 
-        texto_palabras.setText(audio.getTitulo());
-
-        playAudio(Uri.parse(URL+"/"+audio.getAudio()));
-
+            }
+            @Override
+            protected void onFinish(Audios audio) {
+                texto_palabras.setText(audio.getTitulo());
+                //playAudio(Uri.parse(URL+"/"+audio.getAudio()));
+            }
+        }.execute();
     }
 
+    public void siguiente(View view){
+        System.out.print("EL PORCENTAJE ES "+ap.getBufferPercentage());
+        LinearLayout audio_view=(LinearLayout)findViewById(R.id.audio);
+        if(ap!=null)
+            ap.release();
+        audio_view.setVisibility(View.GONE);
+        //ap=new AudioPlayer(audio_view);
+        pagina++;
+        texto_palabras=(TextView)findViewById(R.id.texto_palabras);
+        new ProgressTask<Audios>(this) {
+            @Override
+            protected Audios work() throws Exception {
+                audio = server.getAudios(pagina);
+                return audio;
 
+            }
+            @Override
+            protected void onFinish(Audios audio) {
 
+                texto_palabras.setText(audio.getTitulo());
+               /* LinearLayout layout_audio = (LinearLayout)findViewById(R.id.layout_audio);
+                LinearLayout audio_view=(LinearLayout)findViewById(R.id.audio);
+                audio_view.setVisibility(View.GONE);
+                layout_audio.removeView(audio_view);*/
 
+            }
+
+        }.execute();
+    }
 
     //FUNCIONES DE GRABAR Y REPRODUCIR
     public void grabarAudio(View view) {
@@ -67,8 +101,6 @@ public class PalabrasActivity extends AppCompatActivity {
     }
 
 
-
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(resultCode!= Activity.RESULT_OK) {
@@ -84,8 +116,10 @@ public class PalabrasActivity extends AppCompatActivity {
     }
 
     public void playAudio(Uri uri) {
-        LinearLayout layout_audio = (LinearLayout)findViewById(R.id.audio_layout);
-        AudioPlayer ap = new AudioPlayer(layout_audio);
+
+        LinearLayout layout_audio = (LinearLayout)findViewById(R.id.layout_audio);
+        LinearLayout audio=(LinearLayout)findViewById(R.id.audio);
+         ap = new AudioPlayer(audio);
         try {
             Cursor cursor = getContentResolver().query(uri, null, null, null, null);
             cursor.moveToFirst();
@@ -93,6 +127,7 @@ public class PalabrasActivity extends AppCompatActivity {
             String pathAudio = cursor.getString(index);
             Uri uri_final = Uri.parse(pathAudio);
             ap.setAudioUri(uri_final);
+
         }
         catch(Exception e) {
 
@@ -100,10 +135,16 @@ public class PalabrasActivity extends AppCompatActivity {
     }
 
     public void playAudio(View view) {
-        LinearLayout layout_audio = (LinearLayout)findViewById(R.id.audio_layout);
-        AudioPlayer ap = new AudioPlayer(layout_audio);
+
+        LinearLayout layout_audio = (LinearLayout)findViewById(R.id.layout_audio);
+        LinearLayout audio_view=(LinearLayout)findViewById(R.id.audio);
+        ap = new AudioPlayer(audio_view);
+        //if(audio_view!=null)
+             //layout_audio.removeViewInLayout(audio_view);
+         //ap = new AudioPlayer(layout_audio);
         try {
-            ap.setAudioUri(Settings.System.DEFAULT_RINGTONE_URI);
+            ap.setAudioUri(Uri.parse(URL + "/" + audio.getAudio()));
+
         }
         catch(Exception e) {
 

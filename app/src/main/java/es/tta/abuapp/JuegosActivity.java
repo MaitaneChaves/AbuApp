@@ -12,6 +12,7 @@ import es.tta.abuapp.model.BusinessHuecos;
 import es.tta.abuapp.model.Huecos;
 import es.tta.abuapp.model.Parejas;
 
+
 public class JuegosActivity extends AppCompatActivity {
 
     private Parejas pareja;
@@ -28,7 +29,6 @@ public class JuegosActivity extends AppCompatActivity {
 
     //PAREJAS//
     private BusinessParejas serverParejas;
-    //private DataParejas dataParejas;
 
 
     @Override
@@ -39,6 +39,8 @@ public class JuegosActivity extends AppCompatActivity {
         //HUECOS
         php = new Client(URL);
         server = new BusinessHuecos(php);
+        serverParejas=new BusinessParejas(php);
+
     }
 
     public void parejas(View view)
@@ -53,17 +55,17 @@ public class JuegosActivity extends AppCompatActivity {
 
             @Override
             protected void onFinish(Parejas pareja) {
-                //data.putStatus(s);
-                dataParejas.putParejas(pareja);
+                //dataParejas.putParejas(pareja);
                 Intent intent=new Intent(getApplicationContext(), ParejasActivity.class);
-                intent.putExtras(dataParejas.getBundle());
-                System.out.println("LLAMO A START ACTIVITY");
+                //intent.putExtras(dataParejas.getBundle());
+                //System.out.println("LLAMO A START ACTIVITY");
                 startActivity(intent);
 
             }
         }.execute();*/
 
-        Intent intent = new Intent(this,ParejasActivity.class);
+
+        Intent intent=new Intent(getApplicationContext(), ParejasActivity.class);
         startActivity(intent);
     }
 

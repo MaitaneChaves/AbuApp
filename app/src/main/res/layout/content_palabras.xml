@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:id="@+id/layout_audio">
 
 
     <TextView android:id="@+id/texto_palabras"
@@ -26,7 +27,13 @@
         android:text="Entzun"
         android:onClick="playAudio"/>
 
-    <LinearLayout android:id="@+id/audio_layout"
+    <Button android:id="@+id/boton_siguiente"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Hurrengoa"
+        android:onClick="siguiente"/>
+
+    <LinearLayout android:id="@+id/audio"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
