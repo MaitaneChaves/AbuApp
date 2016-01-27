@@ -1,9 +1,11 @@
 package es.tta.abuapp;
 
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -15,15 +17,11 @@ public class HuecosActivity extends ModelActivity {
 
     private BusinessHuecos server;
     private Huecos hueco;
-
     private Bitmap imagen;
     private ImageView imgview;
-    private String palabra_completa;
     private String palabra_incompleta;
     private TextView preguntaView;
-    private TextView respuestaView;
-    private int num_pag = 1;
-    private int intentos_realizados = 0;
+    private EditText respuestaView;
 
 
     @Override
@@ -33,7 +31,7 @@ public class HuecosActivity extends ModelActivity {
 
         imgview = (ImageView)findViewById(R.id.foto_huecos);
         preguntaView = (TextView)findViewById(R.id.texto_huecos);
-        respuestaView = (TextView)findViewById(R.id.respuesta_huecos);
+        respuestaView = (EditText)findViewById(R.id.respuesta_huecos);
 
         server = new BusinessHuecos(php);
 
@@ -49,25 +47,19 @@ public class HuecosActivity extends ModelActivity {
         }
         else
         {
-            boolean correcto = server.comprobar(hueco.getPalabra_completa(), respuesta);
-            intentos_realizados++;
-            if(correcto)
+            int comp = server.comprobar(respuesta);
+            if(comp==0) //respuesta correcta
             {
-                intentos_realizados = 0;
                 cargarHueco(view);
             }
-            else
+            else if(comp==1) //respuesta incorrecta
             {
-                if(!server.comprobarIntentosRestantes(intentos_realizados))
-                {
-                    Toast.makeText(this,"Has llegado al máximo de intentos.", Toast.LENGTH_SHORT).show();
-                    intentos_realizados = 0;
-                    cargarHueco(view);
-                }
-                else
-                {
-                    Toast.makeText(this,"INCORRECTO. Te quedan " + (server.getMax_intentos()-intentos_realizados) + " intentos", Toast.LENGTH_SHORT).show();
-                }
+                Toast.makeText(this,"INCORRECTO. Te quedan " + (server.getMax_intentos()-server.getIntentos_realizados()) + " intentos", Toast.LENGTH_SHORT).show();
+            }
+            else //llegado a maximo de intentos
+            {
+                Toast.makeText(this,"Has llegado al máximo de intentos", Toast.LENGTH_SHORT).show();
+                cargarHueco(view);
             }
         }
     }
@@ -80,15 +72,13 @@ public class HuecosActivity extends ModelActivity {
 
     public void siguienteHueco()
     {
-        if(num_pag<=server.getMax_huecos())
+        if(!server.finJuego())
         {
             new ProgressTask<Huecos>(this)
             {
                 @Override
                 protected Huecos work() throws Exception {
-                    hueco = server.getHuecos(num_pag);
-                    num_pag++;
-                    palabra_completa = hueco.getPalabra_completa();
+                    hueco = server.getHuecos();
                     palabra_incompleta = hueco.getPalabra_incompleta();
                     imagen = hueco.getImagen();
                     return hueco;
@@ -108,6 +98,7 @@ public class HuecosActivity extends ModelActivity {
             layoutEntero.removeAllViews();
             TextView txNuevo = new TextView(this);
             txNuevo.setText("AMAIERA");
+            txNuevo.setTextColor(Color.WHITE);
             txNuevo.setGravity(Gravity.CENTER);
             txNuevo.setTextSize(70);
             layoutEntero.addView(txNuevo);

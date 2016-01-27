@@ -1,5 +1,6 @@
 package es.tta.abuapp;
 
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -17,7 +18,6 @@ public class CancionesActivity extends ModelActivity
 {
     private BusinessCanciones server;
     private Canciones cancion;
-    private int num_pag = 1;
     private TextView tituloView;
     private VideoView video;
     private MediaController controller;
@@ -78,12 +78,12 @@ public class CancionesActivity extends ModelActivity
 
     public void siguienteCancion()
     {
-        if(num_pag<=server.getMax_canciones())
+        if(!server.finJuego())
         {
             new ProgressTask<Canciones>(this) {
                 @Override
                 protected Canciones work() throws Exception {
-                    cancion = server.getCanciones(num_pag);
+                    cancion = server.getCanciones();
                     return cancion;
                 }
 
@@ -92,7 +92,6 @@ public class CancionesActivity extends ModelActivity
                     tituloView.setText(cancion.getTitulo());
                     String urlCancion = cancion.getVideo();
                     playVideo(urlCancion);
-                    num_pag++;
                 }
             }.execute();
         }
@@ -103,6 +102,7 @@ public class CancionesActivity extends ModelActivity
             controller.hide();
             TextView txNuevo = new TextView(this);
             txNuevo.setText("AMAIERA");
+            txNuevo.setTextColor(Color.WHITE);
             txNuevo.setGravity(Gravity.CENTER);
             txNuevo.setTextSize(70);
             layoutEntero.addView(txNuevo);

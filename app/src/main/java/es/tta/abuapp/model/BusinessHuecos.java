@@ -1,7 +1,6 @@
 package es.tta.abuapp.model;
 
 import android.graphics.Bitmap;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.io.IOException;
@@ -14,20 +13,23 @@ public class BusinessHuecos
     private Huecos hueco = new Huecos();
     private int max_huecos = 20; //Valor de bbdd
     private int max_intentos = 3;
+    private int intentos_realizados = 0;
+    private int num_pag = 1;
 
-    public int getMax_huecos() {
-        return max_huecos;
-    }
     public int getMax_intentos() {
         return max_intentos;
+    }
+
+    public int getIntentos_realizados() {
+        return intentos_realizados;
     }
 
     public BusinessHuecos (Client php){this.php=php;}
 
 
-    public Huecos getHuecos(int indice) throws IOException, JSONException
+    public Huecos getHuecos() throws IOException, JSONException
     {
-        JSONObject json = php.getJson(String.format("devulHuecos.php?indice=%d", indice));
+        JSONObject json = php.getJson(String.format("devulHuecos.php?indice=%d", num_pag));
         hueco.setPalabra_completa(json.getString("com"));
         hueco.setPalabra_incompleta(json.getString("inc"));
         String urlImagen = json.getString("loc");
@@ -36,27 +38,35 @@ public class BusinessHuecos
         return hueco;
     }
 
-    public boolean comprobar(String palabra_completa, String respuesta)
+    public int comprobar(String respuesta)
     {
-        if(respuesta.toLowerCase().compareTo(palabra_completa)==0)
+        intentos_realizados++;
+        if(intentos_realizados<max_intentos)
         {
-            return true;
+            if(respuesta.toLowerCase().compareTo(hueco.getPalabra_completa())==0)
+            {
+                intentos_realizados = 0;
+                num_pag++;
+                return 0;
+            }
+            else
+            {
+                return 1;
+            }
         }
         else
         {
-            return false;
+            intentos_realizados = 0;
+            num_pag++;
+            return 2;
         }
     }
 
-    public boolean comprobarIntentosRestantes(int intentos_realizados)
+    public boolean finJuego()
     {
-        if(intentos_realizados<max_intentos)
-        {
+        if((num_pag-1)==max_huecos)
             return true;
-        }
         else
-        {
             return false;
-        }
     }
 }
