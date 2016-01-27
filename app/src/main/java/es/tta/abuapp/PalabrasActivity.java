@@ -65,7 +65,8 @@ public class PalabrasActivity extends ModelActivity
     public void cargaPalabras()
     {
         LinearLayout audio_view=(LinearLayout)findViewById(R.id.audio);
-        if(ap!=null) {
+        if(ap!=null)
+        {
             ap.removeController();
         }
         //audio_view.setVisibility(View.GONE);
@@ -80,7 +81,8 @@ public class PalabrasActivity extends ModelActivity
 
             }
             @Override
-            protected void onFinish(Audios audio) {
+            protected void onFinish(Audios audio)
+            {
                 texto_palabras.setText(audio.getTitulo());
             }
 
@@ -120,7 +122,8 @@ public class PalabrasActivity extends ModelActivity
         switch(requestCode)
         {
             case AUDIO_REQUEST_CODE:
-                if(ap!=null) {
+                if(ap!=null)
+                {
                     ap.removeController();
                 }
                 playAudio(data.getData());
@@ -131,11 +134,13 @@ public class PalabrasActivity extends ModelActivity
     public void playAudio(Uri uri)
     {
         LinearLayout audio=(LinearLayout)findViewById(R.id.audio);
-        if(ap!=null) {
+        if(ap!=null)
+        {
             ap.removeController();
         }
          ap = new AudioPlayer(audio);
-        try {
+        try
+        {
             Cursor cursor = getContentResolver().query(uri, null, null, null, null);
             cursor.moveToFirst();
             int index = cursor.getColumnIndex(MediaStore.Audio.AudioColumns.DATA);
@@ -143,7 +148,8 @@ public class PalabrasActivity extends ModelActivity
             Uri uri_final = Uri.parse(pathAudio);
             ap.setAudioUri(uri_final);
         }
-        catch(Exception e) {
+        catch(Exception e)
+        {
 
         }
     }
@@ -151,15 +157,18 @@ public class PalabrasActivity extends ModelActivity
     public void playAudio(View view)
     {
         LinearLayout audio_view=(LinearLayout)findViewById(R.id.audio);
-        if(ap!=null){
+        if(ap!=null)
+        {
             ap.removeController();
         }
         ap = new AudioPlayer(audio_view);
 
-        try {
+        try
+        {
             ap.setAudioUri(Uri.parse(URL + "/" + audio.getAudio()));
         }
-        catch(Exception e) {
+        catch(Exception e)
+        {
 
         }
     }
