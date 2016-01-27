@@ -13,21 +13,27 @@
         android:layout_height="wrap_content"
         android:text="Comprar el pan"
         android:textColor="@color/white"
-        android:onClick="mostrarFrasesPan"/>
+        android:onClick="mostrarFrasesPan"
+        android:background="@drawable/boton_plantilla"
+        android:layout_marginTop="15dp"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Ir al bar"
         android:textColor="@color/white"
-        android:onClick="mostrarFrasesBar"/>
+        android:onClick="mostrarFrasesBar"
+        android:background="@drawable/boton_plantilla"
+        android:layout_marginTop="15dp"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Ir al medico"
         android:textColor="@color/white"
-        android:onClick="mostrarFrasesMedico"/>
+        android:onClick="mostrarFrasesMedico"
+        android:background="@drawable/boton_plantilla"
+        android:layout_marginTop="15dp"/>
 
 </LinearLayout>
 

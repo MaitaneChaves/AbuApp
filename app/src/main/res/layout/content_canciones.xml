@@ -21,7 +21,8 @@
         android:layout_height="wrap_content"
         android:text="Hurrengoa"
         android:textColor="@color/white"
-        android:onClick="cargarCancion"/>
+        android:onClick="cargarCancion"
+        android:background="@drawable/boton_plantilla"/>
 
     <LinearLayout android:id="@+id/canciones_layout"
         android:layout_width="match_parent"

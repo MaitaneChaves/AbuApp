@@ -33,6 +33,7 @@
         android:layout_gravity="center"
         android:text="Egiaztatu"
         android:textColor="@color/white"
-        android:onClick="comprobar"/>
+        android:onClick="comprobar"
+        android:background="@drawable/boton_plantilla"/>
 
 </LinearLayout>

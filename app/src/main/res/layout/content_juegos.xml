@@ -12,13 +12,17 @@
         android:layout_height="wrap_content"
         android:text="Parejas"
         android:textColor="@color/white"
-        android:onClick="parejas"/>
+        android:onClick="parejas"
+        android:background="@drawable/boton_plantilla"
+        android:layout_marginTop="15dp"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Huecos"
         android:textColor="@color/white"
-        android:onClick="huecos"/>
+        android:onClick="huecos"
+        android:background="@drawable/boton_plantilla"
+        android:layout_marginTop="15dp"/>
 
 </LinearLayout>
