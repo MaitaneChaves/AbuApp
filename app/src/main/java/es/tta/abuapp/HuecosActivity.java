@@ -42,26 +42,34 @@ public class HuecosActivity extends ModelActivity {
 
     public void comprobar(View view)
     {
-        intentos_realizados++;
         String respuesta = respuestaView.getText().toString();
-        boolean correcto = server.comprobar(hueco.getPalabra_completa(), respuesta);
-        if(correcto)
+        if(respuesta==null || respuesta.isEmpty())
         {
-            Toast.makeText(this,"CORRECTO", Toast.LENGTH_SHORT).show();
-            intentos_realizados = 0;
-            cargarHueco(view);
+            Toast.makeText(this,"Debes introducir un valor", Toast.LENGTH_SHORT).show();
         }
         else
         {
-            Toast.makeText(this,"INCORRECTO. Te quedan " + (server.getMax_intentos()-intentos_realizados) + "intentos", Toast.LENGTH_SHORT).show();
-            if(!server.comprobarIntentosRestantes(intentos_realizados))
+            boolean correcto = server.comprobar(hueco.getPalabra_completa(), respuesta);
+            intentos_realizados++;
+            if(correcto)
             {
-                Toast.makeText(this,"Has llegado al máximo de intentos.", Toast.LENGTH_SHORT).show();
                 intentos_realizados = 0;
                 cargarHueco(view);
             }
+            else
+            {
+                if(!server.comprobarIntentosRestantes(intentos_realizados))
+                {
+                    Toast.makeText(this,"Has llegado al máximo de intentos.", Toast.LENGTH_SHORT).show();
+                    intentos_realizados = 0;
+                    cargarHueco(view);
+                }
+                else
+                {
+                    Toast.makeText(this,"INCORRECTO. Te quedan " + (server.getMax_intentos()-intentos_realizados) + " intentos", Toast.LENGTH_SHORT).show();
+                }
+            }
         }
-
     }
 
     public void cargarHueco(View view)
@@ -82,6 +90,7 @@ public class HuecosActivity extends ModelActivity {
                     num_pag++;
                     palabra_completa = hueco.getPalabra_completa();
                     palabra_incompleta = hueco.getPalabra_incompleta();
+                    imagen = hueco.getImagen();
                     return hueco;
                 }
 
@@ -89,18 +98,6 @@ public class HuecosActivity extends ModelActivity {
                 protected void onFinish(Huecos hueco) {
                     preguntaView.setText(palabra_incompleta);
                     respuestaView.setHint(palabra_incompleta);
-                }
-            }.execute();
-
-            new ProgressTask<Bitmap>(this) {
-                @Override
-                protected Bitmap work() throws Exception {
-                    imagen = php.downloadImage(hueco.getImagen());
-                    return imagen;
-                }
-
-                @Override
-                protected void onFinish(Bitmap imagen) {
                     imgview.setImageBitmap(imagen);
                 }
             }.execute();

@@ -1,9 +1,11 @@
 package es.tta.abuapp.model;
 
+import android.graphics.Bitmap;
+
 public class Huecos {
     private String palabra_completa;
     private String palabra_incompleta;
-    private String imagen;
+    private Bitmap imagen;
 
     public String getPalabra_completa() {
         return palabra_completa;
@@ -21,11 +23,11 @@ public class Huecos {
         this.palabra_incompleta = palabra_incompleta;
     }
 
-    public String getImagen() {
+    public Bitmap getImagen() {
         return imagen;
     }
 
-    public void setImagen(String imagen) {
+    public void setImagen(Bitmap imagen) {
         this.imagen = imagen;
     }
 }

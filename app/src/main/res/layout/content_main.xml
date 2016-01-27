@@ -12,27 +12,36 @@
         android:layout_height="wrap_content"
         android:text="Juegos"
         android:onClick="juegos"
-        android:textColor="@color/white"/>
+        android:textColor="@color/white"
+        android:background="@drawable/boton_plantilla"
+        android:layout_marginTop="15dp"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Dia a dia"
         android:onClick="diaadia"
-        android:textColor="@color/white"/>
+        android:textColor="@color/white"
+        android:background="@drawable/boton_plantilla"
+        android:layout_marginTop="15dp"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Hablando"
         android:onClick="hablando"
-        android:textColor="@color/white"/>
+        android:textColor="@color/white"
+        android:background="@drawable/boton_plantilla"
+        android:layout_marginTop="15dp"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Traductor"
         android:onClick="traductor"
-        android:textColor="@color/white"/>
+        android:textColor="@color/white"
+        android:background="@drawable/boton_plantilla"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"/>
 
 </LinearLayout>

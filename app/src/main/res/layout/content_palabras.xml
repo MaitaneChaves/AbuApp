@@ -20,21 +20,26 @@
         android:layout_height="wrap_content"
         android:text="Grabatu"
         android:textColor="@color/white"
-        android:onClick="grabarAudio"/>
+        android:onClick="grabarAudio"
+        android:background="@drawable/boton_plantilla"/>
 
     <Button android:id="@+id/boton_escuchar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Entzun"
         android:textColor="@color/white"
-        android:onClick="playAudio"/>
+        android:onClick="playAudio"
+        android:background="@drawable/boton_plantilla"
+        android:layout_marginTop="15dp"/>
 
     <Button android:id="@+id/boton_siguiente"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Hurrengoa"
         android:textColor="@color/white"
-        android:onClick="siguiente"/>
+        android:onClick="siguiente"
+        android:background="@drawable/boton_plantilla"
+        android:layout_marginTop="15dp"/>
 
     <LinearLayout android:id="@+id/audio"
         android:layout_width="match_parent"

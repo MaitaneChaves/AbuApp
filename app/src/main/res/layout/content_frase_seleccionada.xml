@@ -28,7 +28,8 @@
         android:layout_gravity="center"
         android:text="Entzun"
         android:textColor="@color/white"
-        android:onClick="playAudio"/>
+        android:onClick="playAudio"
+        android:background="@drawable/boton_plantilla"/>
 
     <LinearLayout
         android:layout_width="match_parent"
