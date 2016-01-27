@@ -1,5 +1,7 @@
 package es.tta.abuapp.model;
 
+import android.graphics.Bitmap;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.io.IOException;
@@ -75,6 +77,12 @@ public class BusinessParejas {
         else{
             return false;
         }
+    }
+
+    public Bitmap getImagen(String path){
+        Bitmap imagen;
+        imagen=php.downloadImage(path);
+        return imagen;
     }
 
 }
