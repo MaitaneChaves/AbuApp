@@ -12,11 +12,16 @@ public class BusinessParejas {
     private Client php;
     private Parejas pareja=new Parejas();
 
+    private final int MAX_PAG=5;
+    private final int parejas_totales=6;
+    private int parejas_correctas=0;
+    private int pagina=1;
+
     public BusinessParejas(Client php){this.php=php;}
 
     public Parejas getParejas () throws IOException, JSONException
     {
-        JSONObject json = php.getJson(String.format("parejas.php?indice=%d", pareja.getPagina()));
+        JSONObject json = php.getJson(String.format("parejas.php?indice=%d", pagina));
         pareja.setImagen1(json.getString("i1"));
         pareja.setImagen2(json.getString("i2"));
         pareja.setImagen3(json.getString("i3"));
@@ -45,8 +50,7 @@ public class BusinessParejas {
     {
         if (palabra.contentEquals(comprobacion))
         {
-            int parejas_correctas=pareja.getParejas_correctas()+1;
-            pareja.setParejas_correctas(parejas_correctas);
+            parejas_correctas++;
             return true;
         }
         else {
@@ -56,11 +60,10 @@ public class BusinessParejas {
 
     public boolean juegoCompletado()
     {
-        if(pareja.getParejas_correctas()==pareja.getParejas_totales())
+        if(parejas_correctas==parejas_totales)
         {
-            int pagina=pareja.getPagina()+1;
-            pareja.setPagina(pagina);
-            pareja.setParejas_correctas(0);
+            pagina++;
+            parejas_correctas=0;
             return true;
         }
         else{
@@ -70,7 +73,7 @@ public class BusinessParejas {
 
     public boolean finJuego()
     {
-        if(pareja.getPagina()>pareja.getMAX_PAG())
+        if(pagina>MAX_PAG)
         {
             return true;
         }
