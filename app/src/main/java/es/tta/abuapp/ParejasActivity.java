@@ -40,8 +40,6 @@ public class ParejasActivity extends ModelActivity {
     private TextView palabra5;
     private TextView palabra6;
 
-    private int pagina=1;
-
     Map<Integer, String> comprobacion = new HashMap<Integer, String>();
 
     @Override
@@ -50,13 +48,12 @@ public class ParejasActivity extends ModelActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parejas);
 
-        server.setParejas_correctas(0);
-        palabra1= (TextView)findViewById(R.id.palabra_parejas1);
-        palabra2= (TextView)findViewById(R.id.palabra_parejas2);
-        palabra3= (TextView)findViewById(R.id.palabra_parejas3);
-        palabra4= (TextView)findViewById(R.id.palabra_parejas4);
-        palabra5= (TextView)findViewById(R.id.palabra_parejas5);
-        palabra6= (TextView)findViewById(R.id.palabra_parejas6);
+        palabra1=(TextView)findViewById(R.id.palabra_parejas1);
+        palabra2=(TextView)findViewById(R.id.palabra_parejas2);
+        palabra3=(TextView)findViewById(R.id.palabra_parejas3);
+        palabra4=(TextView)findViewById(R.id.palabra_parejas4);
+        palabra5=(TextView)findViewById(R.id.palabra_parejas5);
+        palabra6=(TextView)findViewById(R.id.palabra_parejas6);
 
         imagen1=(ImageView)findViewById(R.id.foto_parejas1);
         imagen2=(ImageView)findViewById(R.id.foto_parejas2);
@@ -100,54 +97,31 @@ public class ParejasActivity extends ModelActivity {
 
         if (correcto)
         {
-
             comp.setVisibility(View.INVISIBLE);
             im.setVisibility(View.INVISIBLE);
-            Toast.makeText(getApplicationContext(), "Correcto", Toast.LENGTH_SHORT).show();
-            if(server.getParejas_correctas()==server.getMax_parejas())
+            if(server.juegoCompletado()==true)
             {
-                server.setParejas_correctas(0);
                 cargaJuego();
             }
         }
-        else {
+        else
+        {
             Toast.makeText(getApplicationContext(), "Incorrecto", Toast.LENGTH_SHORT).show();
         }
         imagen=0;
         palabra=0;
     }
 
-    public void siguiente_parejas(View view)
-    {
-
-        if(pagina<=server.getMAX_PAG())
-        {
-            cargaJuego();
-        }
-        else
-        {
-            LinearLayout layout=(LinearLayout)findViewById(R.id.layout_parejas);
-            layout.removeAllViews();
-            TextView final_parejas=new TextView(this);
-            final_parejas.setText("AMAIERA");
-            final_parejas.setGravity(Gravity.CENTER);
-            final_parejas.setTextSize(70);
-            layout.addView(final_parejas);
-        }
-    }
-
     public void cargaJuego()
     {
-
-        if(pagina<=server.getMAX_PAG())
+        if(server.finJuego()==false)
         {
             new ProgressTask<Parejas>(this)
             {
                 @Override
                 protected Parejas work() throws Exception
                 {
-                    pareja = server.getParejas(pagina);
-                    pagina++;
+                    pareja = server.getParejas();
                     return pareja;
                 }
 
@@ -289,6 +263,7 @@ public class ParejasActivity extends ModelActivity {
             final_parejas.setText("AMAIERA");
             final_parejas.setGravity(Gravity.CENTER);
             final_parejas.setTextSize(70);
+            final_parejas.setTextColor(Color.WHITE);
             layout.addView(final_parejas);
         }
 

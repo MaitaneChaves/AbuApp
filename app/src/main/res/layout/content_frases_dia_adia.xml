@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textSize="40dp"
-        android:textColor="@color/blanco"/>
+        android:textColor="@color/white"/>
 
     <LinearLayout android:id="@+id/frases_layout"
         android:layout_width="match_parent"

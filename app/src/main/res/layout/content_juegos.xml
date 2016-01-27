@@ -11,12 +11,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Parejas"
+        android:textColor="@color/white"
         android:onClick="parejas"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Huecos"
+        android:textColor="@color/white"
         android:onClick="huecos"/>
 
 </LinearLayout>

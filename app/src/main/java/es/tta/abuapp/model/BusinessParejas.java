@@ -9,35 +9,12 @@ public class BusinessParejas {
 
     private Client php;
     private Parejas pareja=new Parejas();
-    private final int MAX_PAG=5;
-
-
-
-    private final int max_parejas=6;
-    private int parejas_correctas;
-
-    public int getParejas_correctas() {
-        return parejas_correctas;
-    }
-
-    public void setParejas_correctas(int parejas_correctas) {
-        this.parejas_correctas = parejas_correctas;
-    }
-
-    public int getMax_parejas() {
-        return max_parejas;
-    }
 
     public BusinessParejas(Client php){this.php=php;}
 
-    public int getMAX_PAG()
+    public Parejas getParejas () throws IOException, JSONException
     {
-        return MAX_PAG;
-    }
-
-    public Parejas getParejas (int indice) throws IOException, JSONException
-    {
-        JSONObject json = php.getJson(String.format("parejas.php?indice=%d", indice));
+        JSONObject json = php.getJson(String.format("parejas.php?indice=%d", pareja.getPagina()));
         pareja.setImagen1(json.getString("i1"));
         pareja.setImagen2(json.getString("i2"));
         pareja.setImagen3(json.getString("i3"));
@@ -66,10 +43,36 @@ public class BusinessParejas {
     {
         if (palabra.contentEquals(comprobacion))
         {
-            parejas_correctas++;
+            int parejas_correctas=pareja.getParejas_correctas()+1;
+            pareja.setParejas_correctas(parejas_correctas);
             return true;
         }
         else {
+            return false;
+        }
+    }
+
+    public boolean juegoCompletado()
+    {
+        if(pareja.getParejas_correctas()==pareja.getParejas_totales())
+        {
+            int pagina=pareja.getPagina()+1;
+            pareja.setPagina(pagina);
+            pareja.setParejas_correctas(0);
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public boolean finJuego()
+    {
+        if(pareja.getPagina()>pareja.getMAX_PAG())
+        {
+            return true;
+        }
+        else{
             return false;
         }
     }

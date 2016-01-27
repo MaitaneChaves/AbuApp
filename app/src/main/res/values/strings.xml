@@ -13,4 +13,5 @@
     <string name="no_micro">El dispositivo no tiene microfono</string>
     <string name="palabra_parejas">Tigre</string>
     <string name="title_activity_frase_seleccionada">FraseSeleccionadaActivity</string>
+    <string name="title_activity_pantalla_inicio">PantallaInicio</string>
 </resources>

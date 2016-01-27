@@ -17,12 +17,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:textColor="@color/white"
         android:textSize="20dp"/>
 
     <EditText android:id="@+id/respuesta_huecos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:textColor="@color/white"
         android:textSize="20dp"/>
 
     <Button android:id="@+id/boton_huecos"
@@ -30,6 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="Egiaztatu"
+        android:textColor="@color/white"
         android:onClick="comprobar"/>
 
 </LinearLayout>

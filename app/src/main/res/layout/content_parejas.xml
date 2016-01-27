@@ -65,7 +65,7 @@
             android:textAlignment="center"
             android:layout_gravity="center"
             android:gravity="center"
-            android:textColor="@color/blanco"
+            android:textColor="@color/white"
             android:onClick="guardarPareja" />
 
         <TextView android:id="@+id/palabra_parejas2"
@@ -75,7 +75,7 @@
             android:layout_gravity="center"
             android:textAlignment="center"
             android:gravity="center"
-            android:textColor="@color/blanco"
+            android:textColor="@color/white"
             android:onClick="guardarPareja" />
 
         <TextView android:id="@+id/palabra_parejas3"
@@ -85,7 +85,7 @@
             android:layout_gravity="center"
             android:textAlignment="center"
             android:gravity="center"
-            android:textColor="@color/blanco"
+            android:textColor="@color/white"
             android:onClick="guardarPareja" />
 
         <TextView android:id="@+id/palabra_parejas4"
@@ -95,7 +95,7 @@
             android:textSize="35dp"
             android:textAlignment="center"
             android:gravity="center"
-            android:textColor="@color/blanco"
+            android:textColor="@color/white"
             android:onClick="guardarPareja" />
 
         <TextView android:id="@+id/palabra_parejas5"
@@ -105,7 +105,7 @@
             android:layout_gravity="center"
             android:textAlignment="center"
             android:gravity="center"
-            android:textColor="@color/blanco"
+            android:textColor="@color/white"
             android:onClick="guardarPareja" />
 
         <TextView android:id="@+id/palabra_parejas6"
@@ -115,7 +115,7 @@
             android:layout_gravity="center"
             android:textAlignment="center"
             android:gravity="center"
-            android:textColor="@color/blanco"
+            android:textColor="@color/white"
             android:onClick="guardarPareja" />
     </GridLayout>
 

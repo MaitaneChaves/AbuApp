@@ -14,12 +14,13 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textSize="30dp"
-        android:textColor="@color/blanco"/>
+        android:textColor="@color/white"/>
 
     <Button android:id="@+id/boton_play"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Hurrengoa"
+        android:textColor="@color/white"
         android:onClick="cargarCancion"/>
 
     <LinearLayout android:id="@+id/canciones_layout"

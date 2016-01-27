@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -26,10 +27,7 @@ public class PalabrasActivity extends ModelActivity
 
     private TextView texto_palabras;
 
-    private int pagina=1;
-
     static final int AUDIO_REQUEST_CODE = 1;
-
 
     AudioPlayer ap;
 
@@ -45,8 +43,7 @@ public class PalabrasActivity extends ModelActivity
 
     public void siguiente(View view)
     {
-        pagina++;
-        if(pagina<=server.getMAX_PAG())
+        if(server.finAudios()==false)
         {
             cargaPalabras();
         }
@@ -59,6 +56,7 @@ public class PalabrasActivity extends ModelActivity
             final_palabras.setText("AMAIERA");
             final_palabras.setGravity(Gravity.CENTER);
             final_palabras.setTextSize(70);
+            final_palabras.setTextColor(Color.WHITE);
             layout.addView(final_palabras);
         }
 
@@ -77,7 +75,7 @@ public class PalabrasActivity extends ModelActivity
             @Override
             protected Audios work() throws Exception
             {
-                audio = server.getAudios(pagina);
+                audio = server.getAudios();
                 return audio;
 
             }

@@ -12,18 +12,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Comprar el pan"
+        android:textColor="@color/white"
         android:onClick="mostrarFrasesPan"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Ir al bar"
+        android:textColor="@color/white"
         android:onClick="mostrarFrasesBar"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Ir al medico"
+        android:textColor="@color/white"
         android:onClick="mostrarFrasesMedico"/>
 
 </LinearLayout>
