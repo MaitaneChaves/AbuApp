@@ -90,6 +90,7 @@ public class HuecosActivity extends ModelActivity {
                     num_pag++;
                     palabra_completa = hueco.getPalabra_completa();
                     palabra_incompleta = hueco.getPalabra_incompleta();
+                    imagen = hueco.getImagen();
                     return hueco;
                 }
 
@@ -97,18 +98,6 @@ public class HuecosActivity extends ModelActivity {
                 protected void onFinish(Huecos hueco) {
                     preguntaView.setText(palabra_incompleta);
                     respuestaView.setHint(palabra_incompleta);
-                }
-            }.execute();
-
-            new ProgressTask<Bitmap>(this) {
-                @Override
-                protected Bitmap work() throws Exception {
-                    imagen = php.downloadImage(hueco.getImagen());
-                    return imagen;
-                }
-
-                @Override
-                protected void onFinish(Bitmap imagen) {
                     imgview.setImageBitmap(imagen);
                 }
             }.execute();

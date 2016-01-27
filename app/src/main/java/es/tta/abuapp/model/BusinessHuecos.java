@@ -1,5 +1,7 @@
 package es.tta.abuapp.model;
 
+import android.graphics.Bitmap;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.io.IOException;
@@ -28,7 +30,9 @@ public class BusinessHuecos
         JSONObject json = php.getJson(String.format("devulHuecos.php?indice=%d", indice));
         hueco.setPalabra_completa(json.getString("com"));
         hueco.setPalabra_incompleta(json.getString("inc"));
-        hueco.setImagen(json.getString("loc"));
+        String urlImagen = json.getString("loc");
+        Bitmap imagen = php.downloadImage(urlImagen);
+        hueco.setImagen(imagen);
         return hueco;
     }
 
