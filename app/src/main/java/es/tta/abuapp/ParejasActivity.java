@@ -163,7 +163,7 @@ public class ParejasActivity extends ModelActivity {
                 @Override
                 protected Bitmap work() throws Exception
                 {
-                    foto1 = php.downloadImage(pareja.getImagen1());
+                    foto1 = server.getImagen(pareja.getImagen1());
                     return foto1;
                 }
 
@@ -179,7 +179,7 @@ public class ParejasActivity extends ModelActivity {
                 @Override
                 protected Bitmap work() throws Exception
                 {
-                    foto1 = php.downloadImage(pareja.getImagen2());
+                    foto1 = server.getImagen(pareja.getImagen2());
                     return foto1;
                 }
 
@@ -195,7 +195,7 @@ public class ParejasActivity extends ModelActivity {
                 @Override
                 protected Bitmap work() throws Exception
                 {
-                    foto1 = php.downloadImage(pareja.getImagen3());
+                    foto1 = server.getImagen(pareja.getImagen3());
                     return foto1;
                 }
 
@@ -211,7 +211,7 @@ public class ParejasActivity extends ModelActivity {
                 @Override
                 protected Bitmap work() throws Exception
                 {
-                    foto1 = php.downloadImage(pareja.getImagen4());
+                    foto1 = server.getImagen(pareja.getImagen4());
                     return foto1;
                 }
 
@@ -227,7 +227,7 @@ public class ParejasActivity extends ModelActivity {
                 @Override
                 protected Bitmap work() throws Exception
                 {
-                    foto1 = php.downloadImage(pareja.getImagen5());
+                    foto1 = server.getImagen(pareja.getImagen5());
                     return foto1;
                 }
 
@@ -243,7 +243,7 @@ public class ParejasActivity extends ModelActivity {
                 @Override
                 protected Bitmap work() throws Exception
                 {
-                    foto1 = php.downloadImage(pareja.getImagen6());
+                    foto1 = server.getImagen(pareja.getImagen6());
                     return foto1;
                 }
 

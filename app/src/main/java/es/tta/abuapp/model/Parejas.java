@@ -22,37 +22,6 @@ public class Parejas {
     private String comp5;
     private String comp6;
 
-    private final int MAX_PAG=5;
-    private final int parejas_totales=6;
-    private int parejas_correctas=0;
-    private int pagina=1;
-
-    public int getPagina() {
-        return pagina;
-    }
-
-    public void setPagina(int pagina) {
-        this.pagina = pagina;
-    }
-
-
-    public int getParejas_correctas() {
-        return parejas_correctas;
-    }
-
-    public void setParejas_correctas(int parejas_correctas) {
-        this.parejas_correctas = parejas_correctas;
-    }
-
-    public int getMAX_PAG() {
-        return MAX_PAG;
-    }
-
-    public int getParejas_totales() {
-        return parejas_totales;
-    }
-
-
     public String getPalabra1() {
         return palabra1;
     }

@@ -10,6 +10,10 @@ public class BusinessAudios {
     private Client php;
     private Audios audios = new Audios();
 
+    private final int MAX_PAG=29;
+
+    private int pagina=1;
+
     public BusinessAudios(Client php)
     {
         this.php = php;
@@ -17,7 +21,7 @@ public class BusinessAudios {
 
     public Audios getAudios() throws IOException, JSONException
     {
-        JSONObject json = php.getJson(String.format("audios.php?indice=%d", audios.getPagina()));
+        JSONObject json = php.getJson(String.format("audios.php?indice=%d", pagina));
         audios.setTitulo(json.getString("palabra"));
         audios.setAudio(json.getString("file"));
         return audios;
@@ -25,15 +29,15 @@ public class BusinessAudios {
 
     public boolean finAudios()
     {
-        int pagina=audios.getPagina();
         pagina++;
         System.out.println("La pagina en la que estoy es: "+pagina);
-        if(pagina>audios.getMAX_PAG())
+        if(pagina>MAX_PAG)
         {
             return true;
         }
-        else{
-            audios.setPagina(pagina);
+        else
+        {
             return false;
         }
-    }}
+    }
+}
